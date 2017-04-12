@@ -1,0 +1,6 @@
+---
+applications:
+- name: weatherer
+  random-route: true
+  memory: 256M
+  path: target/Weatherer.war
