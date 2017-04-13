@@ -43,7 +43,7 @@ function doStop () {
         type: 'audio/webm'
     });
 
-    var result = recognizeFile(blob, token);
+    var result = WatsonSpeech.SpeechToText.recognizeFile(blob, token);
     var text = document.getElementById('text');
     text.innerHTML = result;
 
