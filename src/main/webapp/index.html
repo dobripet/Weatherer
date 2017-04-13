@@ -3,7 +3,9 @@
 <head>
 	<title>Java Web Starter Application</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<table>
@@ -13,13 +15,19 @@
 			</td>
 			<td>
 				<!-- The "Hello World!" message comes from /SimpleServlet -->
-				<h1 id = "message"></h1>
+				<h1 id = "message"> Hello World</h1>
 				
 				<p class='description'></p> Thanks for creating a <span class="blue">Liberty for Java Starter Application</span>.
 			</td>
 		</tr>
 	</table>
+	<button id="record" class="btn btn-default"><i class="fa fa-microphone"></i> record</button>
+	<textarea id="text"></textarea>
 	<!-- Call SimpleServlet to get the "Hello World" message  -->
-	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript" src="js/watson-speech.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/record.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>
