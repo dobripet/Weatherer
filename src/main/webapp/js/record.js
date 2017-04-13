@@ -4,14 +4,12 @@ var recorder;
 var recordedData;
 
 function doRecord () {
-    $record.onclick = doStop;
-    $record.innerHTML = '<i class="fa fa-microphone-slash"></i> stop';
     navigator.mediaDevices.getUserMedia({
         audio: true
     })
         .then(function (stream) {
             $record.onclick = doStop;
-            $record.textContent = '<i class="fa fa-microphone-slash"></i>stop';
+            $record.innerHTML = '<i class="fa fa-microphone-slash"></i>stop';
             recordedData = [];
 
             recorder = new MediaRecorder(stream, {

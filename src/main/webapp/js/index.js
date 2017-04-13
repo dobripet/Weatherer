@@ -6,6 +6,7 @@ xhrGet("SimpleServlet", function(responseText){
 	// var mytitle = document.getElementById('message');
 	// mytitle.innerHTML = responseText;
 	token = responseText;
+	console.log("Token: " + token);
 
 }, function(err){
 	console.log(err);
@@ -34,11 +35,11 @@ function xhrGet(url, callback, errback){
 			if(xhr.status == 200){
 				callback(xhr.responseText);
 			}else{
-				errback('service not available');
+				errback('Service not available. Status = ' + xhr.status);
 			}
 		}
 	};
-	xhr.timeout = 3000;
+	xhr.timeout = 10000;
 	xhr.ontimeout = errback;
 	xhr.send();
 }
