@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 public class BasicServiceImpl implements BasicService {
 
 
-    @Override
     public String helloWorld() {
         return "Hello from Basic service and Spring Boot MVC running on Liberty!";
     }
