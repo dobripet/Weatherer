@@ -29,5 +29,6 @@
 
     <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
         id="defaultHttpEndpoint" />
+    <application name="Weatherer" context-root="/Weatherer" location="${appLocation}" type="war"/>
 
 </server>
