@@ -7,12 +7,15 @@
     <packaging>war</packaging>
 
 
+    <scm>
+        <connection>scm:git:git@github.com:WASdev/tool.accelerate.core.git</connection>
+        <developerConnection>scm:git@github.com:WASdev/tool.accelerate.core.git</developerConnection>
+        <url>git@github.com:WASdev/tool.accelerate.core.git</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
 
 
         <!-- Liberty server properties -->
@@ -50,7 +53,6 @@
             <url>http://liberty-app-accelerator.wasdev.developer.ibm.com/start/api/v1/repo</url>
         </repository>
     </repositories>
-
 
 
     <dependencies>
@@ -103,35 +105,57 @@
     </dependencies>
 
     <build>
-        <finalName>Weatherer</finalName>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>3.0.0</version>
-                    <configuration>
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>net.wasdev.wlp.maven.plugins</groupId>
-                    <artifactId>liberty-maven-plugin</artifactId>
-                    <version>1.2.1</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <packagingExcludes>pom.xml</packagingExcludes>
+                </configuration>
+            </plugin>
+            <!-- Enable liberty-maven plugin -->
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
+                <version>1.2</version>
+                <extensions>true</extensions>
                 <configuration>
-                    <configFile>src/main/wlp/server.xml</configFile>
+                    <serverName>${wlpServerName}</serverName>
+                    <assemblyArtifact>
+                        <groupId>com.ibm.websphere.appserver.runtime</groupId>
+                        <artifactId>wlp-webProfile7</artifactId>
+                        <version>17.0.0.1</version>
+                        <type>zip</type>
+                    </assemblyArtifact>
+                    <assemblyInstallDirectory>${project.build.directory}</assemblyInstallDirectory>
+                    <configFile>src/main/liberty/config/server.xml</configFile>
+                    <packageFile>${package.file}</packageFile>
+                    <include>${packaging.type}</include>
                     <bootstrapProperties>
-                        <appLocation>../../../../../${project.build.finalName}</appLocation>
+                        <default.http.port>${testServerHttpPort}</default.http.port>
+                        <default.https.port>${testServerHttpsPort}</default.https.port>
                     </bootstrapProperties>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>intall-liberty</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>install-server</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>package-app</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package-server</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+            <!-- Plugin to run functional tests -->
         </plugins>
     </build>
 </project>
