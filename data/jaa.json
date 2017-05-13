@@ -1,14 +1,14 @@
 {  
    "sportplace":{  
       "contact":{  
-         "name":"Sportpalace",
-         "address":"Masarykova 75, Plzeň-Doubravka 312 00",
-         "phone":"776 371 186",
-         "email":"recepce@sportpalace.cz",
-         "url":"http://www.sportpalace.cz",
-         "lon":49.752226,
-         "lat":13.415369,
-		 "z":16
+         "name":"Studio J & A",
+         "address":"U Trati 33, 301 00 Plzeň",
+         "phone":"731 084 674",
+         "email":"studiojaa@seznam.cz",
+         "url":"http://studiojaa.cz/",
+         "lon":49.739569,
+         "lat":13.379288,
+		 "z":14
       },
       "open":{  
          "monday":[7, 22],
@@ -20,32 +20,8 @@
          "sunday":[8, 21]
       },
       "sport":[  
-         {  
-            "squash":{  
-               "price":220,
-                "outside":false
-            }
-         },
-         {  
-            "badminton":{  
-               "price":200,
-                "outside":false
-            }
-         },
-		 {  
-            "fitness":{  
-               "price":70,
-                "outside":false
-            }
-         },
 		 {  
             "bosu":{  
-               "price":80,
-                "outside":false
-            }
-         },
-		 {  
-            "bodystyling":{  
                "price":80,
                 "outside":false
             }
@@ -56,14 +32,62 @@
                 "outside":false
             }
          },
+		 {  
+            "deep work":{  
+               "price":80,
+                "outside":false
+            }
+         },
          {  
-            "power joga":{  
+            "flowin":{  
                "price":80,
                 "outside":false
             }
          },
 		 {  
-            "tabata":{  
+            "chi-toning":{  
+               "price":80,
+                "outside":false
+            }
+         },
+		 {  
+            "cycling":{  
+               "price":80,
+                "outside":false
+            }
+         },
+		 {  
+            "joga":{  
+               "price":80,
+                "outside":false
+            }
+         },
+		 {  
+            "jumping":{  
+               "price":80,
+                "outside":false
+            }
+         },
+         {  
+            "k2":{  
+               "price":120,
+                "outside":false
+            }
+         },
+		 {  
+            "kruhovy trenink":{  
+               "price":80,
+                "outside":false
+            }
+         },
+		 {  
+            "cycling":{  
+               "price":80,
+                "outside":false
+            }
+         },
+		 {  
+            "joga":{  
                "price":80,
                 "outside":false
             }
@@ -74,6 +98,12 @@
                 "outside":false
             }
          },
+         {  
+            "piloxing":{  
+               "price":120,
+                "outside":false
+            }
+         },
 		 {  
             "port de bras":{  
                "price":80,
@@ -81,23 +111,11 @@
             }
          },
 		 {  
-            "thaibox":{  
-               "price":80,
-                "outside":false
-            }
-         },
-         {  
-            "kruhovy trenink":{  
-               "price":80,
-                "outside":false
-            }
-         },
-		 {  
-            "chi-toning":{  
+            "zumba":{  
                "price":80,
                 "outside":false
             }
          }
-      ]
+	  ]
    }
 }

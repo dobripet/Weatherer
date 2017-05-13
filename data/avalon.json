@@ -1,0 +1,79 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Avalon Fitness Center",
+         "address":"PODĚBRADOVA 2842/1, 301 00 Plzeň",
+         "phone":"725 428 141",
+         "email":"info@avalonfitness.cz",
+         "url":"http://www.avalonfitness.cz",
+         "lon":49.746232,
+         "lat":13.368771,
+		 "z":18
+      },
+      "open":{  
+         "monday":[6, 22],
+         "tuesday":[6, 22],
+         "wednesday":[6, 22],
+         "thursday":[6, 22],
+         "friday":[6, 22],
+         "saturday":[8, 22],
+         "sunday":[8, 22]
+      },
+      "sport":[  
+         {  
+            "fitness":{  
+               "price":100,
+                "outside":false
+            }
+         },
+         {  
+            "crossfit":{  
+               "price":100,
+                "outside":false
+            }
+         },
+		 {  
+            "fitbox":{  
+               "price":100,
+                "outside":false
+            }
+         },
+		 {  
+            "zumba":{  
+               "price":100,
+                "outside":false
+            }
+         },
+		 {  
+            "hiit":{  
+               "price":100,
+                "outside":false
+            }
+         },
+		 {  
+            "kickbox":{  
+               "price":100,
+                "outside":false
+            }
+         },
+         {  
+            "box":{  
+               "price":100,
+                "outside":false
+            }
+         },
+         {  
+            "sebeobrana":{  
+               "price":100,
+                "outside":false
+            }
+         },
+		 {  
+            "cycling":{  
+               "price":100,
+                "outside":false
+            }
+         }
+      ]
+   }
+}

@@ -1,0 +1,85 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Kalikovský mlýn",
+         "address":"Radčická 60/40, 301 00 Plzeň",
+         "phone":"373 730 220",
+         "email":"info@kalikovskymlyn.cz",
+         "url":"http://www.sport.kalikovskymlyn.cz",
+         "lon":49.750365,
+         "lat":13.365346,
+		 "z":18
+      },
+      "open":{  
+         "monday":[7, 22],
+         "tuesday":[7, 22],
+         "wednesday":[7, 22],
+         "thursday":[7, 22],
+         "friday":[7, 22],
+         "saturday":[8, 13],
+         "sunday":[11, 22]
+      },
+      "sport":[  
+         {  
+            "squash":{  
+               "price":230,
+                "outside":false
+            }
+         },
+         {  
+            "power plate":{  
+               "price":245,
+                "outside":false
+            }
+         },
+		 {  
+            "heat":{  
+               "price":140,
+                "outside":false
+            }
+         },
+		 {  
+            "trx":{  
+               "price":110,
+                "outside":false
+            }
+         },
+		 {  
+            "ploche bricho":{  
+               "price":85,
+                "outside":false
+            }
+         },
+		 {  
+            "flexibar":{  
+               "price":85,
+                "outside":false
+            }
+         },
+         {  
+            "powerjoga":{  
+               "price":85,
+                "outside":false
+            }
+         },
+         {  
+            "kruhový trénink":{  
+               "price":85,
+                "outside":false
+            }
+         },
+		 {  
+            "joga":{  
+               "price":80,
+                "outside":false
+            }
+         },
+		 {  
+            "deep work":{  
+               "price":100,
+                "outside":false
+            }
+         }
+      ]
+   }
+}

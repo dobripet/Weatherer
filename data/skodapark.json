@@ -1,0 +1,85 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Škoda sport park",
+         "address":"Malostranská, 326 00 Plzeň",
+         "phone":"602 252 031",
+         "email":"martin.homan@seznam.cz",
+         "url":"http://www.skodasportpark.cz",
+         "lon":49.7240435,
+         "lat":13.3908001,
+		 "z":15
+      },
+      "open":{  
+         "monday":[0, 24],
+         "tuesday":[0, 24],
+         "wednesday":[0, 24],
+         "thursday":[0, 24],
+         "friday":[0, 24],
+         "saturday":[0, 24],
+         "sunday":[0, 24]
+      },
+      "sport":[  
+         {  
+            "skate park":{  
+               "price":0,
+                "outside":true
+            }
+         },
+         {  
+            "beach volejbal":{  
+               "price":0,
+                "outside":true
+            }
+         },
+		 {  
+            "hokejbal":{  
+               "price":0,
+                "outside":true
+            }
+         },
+		 {  
+            "nohejbal":{  
+               "price":0,
+                "outside":true
+            }
+         },
+		 {  
+            "streetball":{  
+               "price":0,
+                "outside":true
+            }
+         },
+		 {  
+            "in-line":{  
+               "price":0,
+                "outside":true
+            }
+         },
+         {  
+            "horolezecka stena":{  
+               "price":0,
+                "outside":true
+            }
+         },
+		 {  
+            "lanove centrum":{  
+               "price":0,
+                "outside":true
+            }
+         },
+		 {  
+            "posilovna":{  
+               "price":0,
+                "outside":true
+            }
+         },
+		 {  
+            "detske hriste":{  
+               "price":0,
+                "outside":true
+            }
+         }
+      ]
+   }
+}
