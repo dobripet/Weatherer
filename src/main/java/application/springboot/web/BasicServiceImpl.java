@@ -11,6 +11,7 @@ public class BasicServiceImpl implements BasicService {
 
 
     public String helloWorld() {
-        return "Hello from Basic service and Spring Boot MVC running on Liberty!";
+//        return "Hello from Basic service and Spring Boot MVC running on Liberty!";
+        return "index";
     }
 }
