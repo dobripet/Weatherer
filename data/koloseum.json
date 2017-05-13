@@ -1,0 +1,126 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Koloseum",
+         "address":"Sokolovská 76, Plzeň, 323 00",
+         "phone":"774 378 775",
+         "email":"info@koloseum.info",
+         "url":"http://sport-plzen.cz/",
+         "lon":49.772604,
+         "lat":13.3693705
+      },
+      "open":{  
+         "monday":[6, 22],
+         "tuesday":[6, 22],
+         "wednesday":[6, 22],
+         "thursday":[6, 22],
+         "friday":[6, 22],
+         "saturday":[7, 22],
+         "sunday":[7, 22]
+      },
+      "sport":[  
+         {  
+            "bodyforming":{
+               "price":80,
+                "outside":false
+            }
+         },
+         {  
+            "bosu":{
+               "price":80,
+                "outside":false
+            }
+         },
+		 {  
+            "flowin":{
+               "price":80,
+                "outside":false
+            }
+         },
+         {
+            "fitness":{
+               "price":70,
+               "outside":false
+            }
+         },
+         {
+            "joga":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "horolezecka stena":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "skakani":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "cyklistika":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "kruhovy trenink":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "pilates":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "piloxing":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "pumping":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "step":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "zumba":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "aerobic":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "squash":{
+               "price":210,
+               "outside":false
+            }
+         },
+         {
+            "trx":{
+               "price":210,
+               "outside":false
+            }
+         }
+      ]
+   }
+}
