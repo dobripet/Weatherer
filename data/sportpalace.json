@@ -1,0 +1,42 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Sportpalace",
+         "address":"Masarykova 75, Plzeň-Doubravka 312 00",
+         "phone":"776 371 186",
+         "email":"recepce@sportpalace.cz",
+         "url":"http://www.sportpalace.cz",
+         "lon":49.752226,
+         "lat":13.415369
+      },
+      "open":{  
+         "monday":[7, 22],
+         "tuesday":[7, 22],
+         "wednesday":[7, 22],
+         "thrusday":[7, 22],
+         "friday":[7, 22],
+         "saturday":[8, 21],
+         "sunday":[8, 21]
+      },
+      "sport":[  
+         {  
+            "squash":{  
+               "price":220,
+                "outside":false
+            }
+         },
+         {  
+            "badminton":{  
+               "price":200,
+                "outside":false
+            }
+         },
+		 {  
+            "fitness":{  
+               "price":70,
+                "outside":false
+            }
+         }
+      ]
+   }
+}
