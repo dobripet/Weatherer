@@ -1,0 +1,37 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Cross fit",
+         "address":"U Ježíška 2, Plzeň 1, 323 00",
+         "phone":"777 72 77 72",
+         "email":"info@crossfitplzen.cz",
+         "url":"http://crossfitplzen.cz",
+         "lon":49.7412329,
+         "lat":13.3812477,
+         "z":17
+      },
+      "open":{  
+         "monday":[10, 18],
+         "tuesday":[8, 15],
+         "wednesday":[15, 23],
+         "thursday":[6, 23],
+         "friday":[12, 23],
+         "saturday":[],
+         "sunday":[]
+      },
+      "sport":[  
+         {  
+            "crossfit":{
+               "price":200,
+                "outside":false
+            }
+         },
+         {  
+            "gym":{
+               "price":200,
+                "outside":false
+            }
+         }
+      ]
+   }
+}

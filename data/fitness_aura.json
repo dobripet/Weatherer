@@ -1,0 +1,37 @@
+{
+  "sportplace":{
+    "contact":{
+      "name":"Fitness aura",
+      "address":"Denisovo nábřeží 4, Plzeň, 301 00",
+      "phone":"378 218 267",
+      "email":"fitnessaura@seznam.cz",
+      "url":"http://www.fitnessaura.cz",
+      "lon":49.7450911,
+      "lat":13.3808805,
+      "z":17
+    },
+    "open":{
+      "monday":[10, 18],
+      "tuesday":[8, 15],
+      "wednesday":[15, 23],
+      "thursday":[6, 23],
+      "friday":[12, 23],
+      "saturday":[],
+      "sunday":[]
+    },
+    "sport":[
+      {
+        "fitness":{
+          "price":60,
+          "outside":false
+        }
+      },
+      {
+        "kardio":{
+          "price":60,
+          "outside":false
+        }
+      }
+    ]
+  }
+}
