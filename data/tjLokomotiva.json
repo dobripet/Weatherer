@@ -1,0 +1,115 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"TH Lokomotiva",
+         "address":"Úslavská 75, Plzeň, 326 00",
+         "phone":"377 444 827",
+         "email":"info@tjloko-plzen.cz",
+         "url":"http://www.tjloko-plzen.cz/",
+         "lon":49.7385454,
+         "lat":13.3952193,
+         "z":17
+      },
+      "open":{  
+         "monday":[7, 23],
+         "tuesday":[7, 23],
+         "wednesday":[7, 23],
+         "thursday":[7, 23],
+         "friday":[7, 23],
+         "saturday":[7, 23],
+         "sunday":[7, 23]
+      },
+      "sport":[  
+         {  
+            "tenis":{
+               "price":140,
+                "outside":false
+            }
+         },
+         {
+            "tenis":{
+               "price":390,
+               "outside":true
+            }
+         },
+         {
+            "squash":{
+               "price":200,
+               "outside":false
+            }
+         },
+         {
+            "bowling":{
+               "price":275,
+               "outside":false
+            }
+         },
+         {
+            "fitness":{
+               "price":100,
+               "outside":false
+            }
+         },
+         {
+            "hala":{
+               "price":200,
+               "outside":false
+            }
+         },
+         {
+            "badminton":{
+               "price":150,
+               "outside":false
+            }
+         },
+         {
+            "horolezecka stena":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "aerobic":{
+               "price":100,
+               "outside":false
+            }
+         },
+         {
+            "golf":{
+               "price":250,
+               "outside":false
+            }
+         },
+         {
+            "beach volejbal":{
+               "price":130,
+               "outside":true
+            }
+         },
+         {
+            "futsal":{
+               "price":150,
+               "outside":true
+            }
+         },
+         {
+            "basketball":{
+               "price":150,
+               "outside":true
+            }
+         },
+         {
+            "nohejball":{
+               "price":150,
+               "outside":true
+            }
+         },
+         {
+            "volejbal":{
+               "price":150,
+               "outside":true
+            }
+         }
+      ]
+   }
+}

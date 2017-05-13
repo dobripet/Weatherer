@@ -1,0 +1,85 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"TK Slavia Plzeň z.s.",
+         "address":"U Borského parku 2916/19, Plzeň, 301 00",
+         "phone":"377 422 615",
+         "email":"info@tkslaviaplzen.cz",
+         "url":"https://www.tkslaviaplzen.cz/",
+         "lon":49.722907,
+         "lat":13.366594,
+         "z":15
+      },
+      "open":{  
+         "monday":[6, 21],
+         "tuesday":[6, 21],
+         "wednesday":[6, 21],
+         "thursday":[6, 21],
+         "friday":[6, 21],
+         "saturday":[6, 21],
+         "sunday":[6, 21],
+      },
+      "sport":[  
+         {  
+            "tenis":{
+               "price":280,
+                "outside":false
+            }
+         },
+         {
+            "tenis":{
+               "price":400,
+               "outside":true
+            }
+         },
+         {
+            "hazena":{
+               "price":300,
+               "outside":true
+            }
+         },
+         {
+            "futsal":{
+               "price":300,
+               "outside":true
+            }
+         },
+         {
+            "minigolf":{
+               "price":50,
+               "outside":true
+            }
+         },
+         {
+            "hala":{
+               "price":200,
+               "outside":false
+            }
+         },
+         {
+            "beach volejbal":{
+               "price":100,
+               "outside":true
+            }
+         },
+         {
+            "volejbal":{
+               "price":100,
+               "outside":true
+            }
+         },
+         {
+            "nohejbal":{
+               "price":100,
+               "outside":true
+            }
+         },
+         {
+            "inline":{
+               "price":100,
+               "outside":true
+            }
+         },
+      ]
+   }
+}

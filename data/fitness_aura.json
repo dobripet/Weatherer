@@ -11,13 +11,13 @@
       "z":17
     },
     "open":{
-      "monday":[10, 18],
-      "tuesday":[8, 15],
-      "wednesday":[15, 23],
-      "thursday":[6, 23],
-      "friday":[12, 23],
-      "saturday":[],
-      "sunday":[]
+      "monday":[7, 21],
+      "tuesday":[7, 21],
+      "wednesday":[7, 21],
+      "thursday":[7, 21],
+      "friday":[7, 21],
+      "saturday":[9,16],
+      "sunday":[9,16]
     },
     "sport":[
       {
