@@ -17,7 +17,7 @@
          "thursday":[6, 21],
          "friday":[6, 21],
          "saturday":[6, 21],
-         "sunday":[6, 21],
+         "sunday":[6, 21]
       },
       "sport":[  
          {  
@@ -79,7 +79,7 @@
                "price":100,
                "outside":true
             }
-         },
+         }
       ]
    }
 }
