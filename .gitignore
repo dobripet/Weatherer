@@ -4,3 +4,5 @@ Weatherer.iml
 
 src/main/wlp/server.xml
 node_modules/*
+bundle.js
+vendor.bundle.js

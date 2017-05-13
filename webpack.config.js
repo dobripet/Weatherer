@@ -7,7 +7,7 @@ module.exports = function(){
     plugins = [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: './src/main/webapp/js/vendor.bundle.js',
+            filename: './src/main/resources/static/js/vendor.bundle.js',
             minChunks: Infinity,
         })
     ];
@@ -47,7 +47,7 @@ module.exports = function(){
         devtool:  isProd ? 'source-map' : 'eval',
         output: {
             path: __dirname,
-            filename: './src/main/webapp/js/bundle.js'
+            filename: './src/main/resources/static/js/bundle.js'
         },
         module: {
             rules: [
