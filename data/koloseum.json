@@ -117,7 +117,19 @@
          },
          {
             "trx":{
-               "price":210,
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "hiit":{
+               "price":80,
+               "outside":false
+            }
+         },
+         {
+            "workout":{
+               "price":80,
                "outside":false
             }
          }

@@ -1,0 +1,54 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Fitness hulk",
+         "address":"Gerská 1247/34, Plzeň 1, 323 00",
+         "phone":"",
+         "email":"info@koloseum.info",
+         "url":"http://sport-plzen.cz/",
+         "lon":49.7790286,
+         "lat":13.3683166
+      },
+      "open":{  
+         "monday":[6, 23],
+         "tuesday":[6, 23],
+         "wednesday":[6, 23],
+         "thursday":[6, 23],
+         "friday":[6, 23],
+         "saturday":[6, 23],
+         "sunday":[6, 23]
+      },
+      "sport":[  
+         {  
+            "core":{
+               "price":90,
+                "outside":false
+            }
+         },
+         {  
+            "workout":{
+               "price":90,
+                "outside":false
+            }
+         },
+		 {  
+            "hiit":{
+               "price":90,
+                "outside":false
+            }
+         },
+         {
+            "trx":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "fitness":{
+               "price":70,
+               "outside":false
+            }
+         }
+      ]
+   }
+}
