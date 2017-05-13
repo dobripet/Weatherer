@@ -7,7 +7,8 @@
          "email":"info@koloseum.info",
          "url":"http://sport-plzen.cz/",
          "lon":49.772604,
-         "lat":13.3693705
+         "lat":13.3693705,
+         "z":17
       },
       "open":{  
          "monday":[6, 22],

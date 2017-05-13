@@ -4,10 +4,11 @@
          "name":"Fitness hulk",
          "address":"Gerská 1247/34, Plzeň 1, 323 00",
          "phone":"",
-         "email":"info@koloseum.info",
-         "url":"http://sport-plzen.cz/",
+         "email":"info@fitnesshulk.cz",
+         "url":"http://fitnesshulk.cz",
          "lon":49.7790286,
-         "lat":13.3683166
+         "lat":13.3683166,
+         "z":17
       },
       "open":{  
          "monday":[6, 23],

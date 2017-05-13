@@ -1,0 +1,109 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Fitness galerie",
+         "address":"nám. Generála Píky 2703/27, Plzeň , 326 00",
+         "phone":"605 203 031",
+         "email":"info@koloseum.info",
+         "url":"http://fitnessgalerie.cz/",
+         "lon":49.732263,
+         "lat":13.3989961,
+         "z":17
+      },
+      "open":{  
+         "monday":[6, 23],
+         "tuesday":[6, 23],
+         "wednesday":[6, 23],
+         "thursday":[6, 23],
+         "friday":[6, 23],
+         "saturday":[7, 23],
+         "sunday":[7, 23]
+      },
+      "sport":[  
+         {  
+            "trx":{
+               "price":80,
+                "outside":false
+            }
+         },
+         {  
+            "bosu":{
+               "price":90,
+                "outside":false
+            }
+         },
+		 {  
+            "joga":{
+               "price":90,
+                "outside":false
+            }
+         },
+         {
+            "dance":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "bodyforming":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "kruhovy trenink":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "flowin":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "trampolina":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "workout":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "cycling":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "gts":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "tehotenske cviceni":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "fitness":{
+               "price":90,
+               "outside":false
+            }
+         },
+         {
+            "kardio":{
+               "price":90,
+               "outside":false
+            }
+         }
+      ]
+   }
+}
