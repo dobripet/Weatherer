@@ -29,8 +29,7 @@ public class IndexController {
     BasicService basicService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String hello() {
+    public String index() {
         return basicService.getIndex();
     }
-
 }
