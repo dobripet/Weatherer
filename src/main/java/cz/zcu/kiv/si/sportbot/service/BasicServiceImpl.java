@@ -1,4 +1,4 @@
-package application.springboot.web;
+package cz.zcu.kiv.si.sportbot.service;
 
 import org.springframework.stereotype.Service;
 
@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BasicServiceImpl implements BasicService {
 
-
-    public String helloWorld() {
-//        return "Hello from Basic service and Spring Boot MVC running on Liberty!";
+    public String getIndex() {
         return "index";
     }
 }

@@ -1,4 +1,4 @@
-package application.springboot.web;
+package cz.zcu.kiv.si.sportbot.service;
 
 import com.ibm.watson.developer_cloud.conversation.v1.ConversationService;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;

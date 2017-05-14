@@ -1,4 +1,4 @@
-package application.springboot.web;
+package cz.zcu.kiv.si.sportbot.service;
 
 /**
  * @author Marek Rasocha

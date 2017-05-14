@@ -9,5 +9,5 @@
         <tcpOptions soReuseAddr="true"/>
     </httpEndpoint>
 
-    <application name="Weatherer" context-root="/Weatherer" location="${appLocation}" type="war"/>
+    <application name="SportBot" context-root="/sportbot" location="${appLocation}" type="war"/>
 </server>

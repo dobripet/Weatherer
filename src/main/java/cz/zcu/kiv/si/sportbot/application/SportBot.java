@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/ 
-package application.springboot.web;
+package cz.zcu.kiv.si.sportbot.application;
 
 import org.springframework.boot.autoconfigure.MessageSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,12 +21,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 //import org.springframework.boot.web.support.SpringBootServletInitializer
 
-@SpringBootApplication(exclude = MessageSourceAutoConfiguration.class)
-public class SpringBootLibertyApplication extends SpringBootServletInitializer {
+@SpringBootApplication(scanBasePackages = {"cz.zcu.kiv.si.sportbot"}, exclude = MessageSourceAutoConfiguration.class)
+public class SportBot extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SpringBootLibertyApplication.class);
+        return application.sources(SportBot.class);
     }
 
 }

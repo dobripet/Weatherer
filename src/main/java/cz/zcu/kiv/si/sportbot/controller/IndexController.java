@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/ 
-package application.springboot.web;
+package cz.zcu.kiv.si.sportbot.controller;
 
+import cz.zcu.kiv.si.sportbot.service.BasicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/")
-public class LibertyHelloController {
+public class IndexController {
 
     @Autowired
     BasicService basicService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String hello() {
-        return basicService.helloWorld();
+        return basicService.getIndex();
     }
 
 }
