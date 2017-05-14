@@ -37,4 +37,10 @@ public interface DataFinder {
      * @return list nalazenych sportplace
      */
     List<SportPlace> findSportInGroup(SportGroup sportGroup);
+
+    /**
+     * nejde sporty ze skupiny
+     * @return list nalazenych sportplace
+     */
+    List<SportPlace> findSportFree();
 }

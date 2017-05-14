@@ -75,4 +75,16 @@ public class DataFinderImpl implements DataFinder {
         }
         return sportPlaces;
     }
+    public List<SportPlace> findSportFree(){
+        List<SportPlace> sportPlaces = new ArrayList<>();
+        for (SportPlace sportPlace : dataLoader.getSportPlaces()){
+            for (Sport sport : sportPlace.getSports()){
+                if(sport.getPrice()==0){
+                    sportPlaces.add(sportPlace);
+                    break;
+                }
+            }
+        }
+        return sportPlaces;
+    }
 }
