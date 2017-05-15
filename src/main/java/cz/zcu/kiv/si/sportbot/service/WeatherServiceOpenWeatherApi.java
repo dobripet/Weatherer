@@ -5,10 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportGroup;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Week;
-import cz.zcu.kiv.si.sportbot.model.CurrentWeather;
-import cz.zcu.kiv.si.sportbot.model.Forecast;
-import cz.zcu.kiv.si.sportbot.model.ForecastDaily;
-import cz.zcu.kiv.si.sportbot.model.SportGroupForecast;
+import cz.zcu.kiv.si.sportbot.model.*;
 import cz.zcu.kiv.si.sportbot.utils.TimePassedException;
 import cz.zcu.kiv.si.sportbot.utils.Utils;
 import org.springframework.stereotype.Service;
@@ -76,25 +73,62 @@ public class WeatherServiceOpenWeatherApi implements WeatherService {
     @Override
     public SportGroupForecast getSportGroupAndForecastForDate(int hour, Day day, Week week) throws TimePassedException{
         long time = Utils.getUnixTimeFromDate(hour, day, week);
-        List<CurrentWeather> cwList = getWeatherForecast().getList();
-        //no forecast, just stay inside
-        if(cwList == null || cwList.size() == 0){
-            //return SportGroup.INSIDE;
-        }
+        SportGroupForecast sportGroupForecast = null;
         //browse accurate forecast
-        if(cwList.get(cwList.size()-1).getDt()<(time + 10800)) {
-            for (CurrentWeather cw : getWeatherForecast().getList()) {
-                if (cw.getDt() < time) {
-                    //https://openweathermap.org/weather-conditions
-                    if(cw.getWeather().getId() >= 800 && cw.getWeather().getId() < 900){
-                        return null;
+        if(getWeatherForecast() != null) {
+            List<CurrentWeather> cwList = getWeatherForecast().getList();
+            if (cwList != null && cwList.size() > 0) {
+                if (cwList.get(cwList.size() - 1).getDt() < (time + 10800)) {
+                    for (CurrentWeather cw : cwList) {
+                        if (cw.getDt() < time) {
+                            //https://openweathermap.org/weather-conditions
+                            if (((cw.getWeather().getId() >= 800 && cw.getWeather().getId() < 900)
+                                    || (cw.getWeather().getId() > 950 && cw.getWeather().getId() < 957))
+                                    && cw.getMain().getTemp() > 15) {
+                                sportGroupForecast = new SportGroupForecast(SportGroup.OUTSIDE, cw, true);
+                            } else {
+                                sportGroupForecast = new SportGroupForecast(SportGroup.INSIDE, cw, true);
+                            }
+                            break;
+                        }
                     }
                 }
-                break;
             }
         }
-        //TODO
-        return null;
+        //browse daily
+        if(getWeatherForecastDaily() != null) {
+            List<DailyWeather> dwList = getWeatherForecastDaily().getList();
+            if (dwList != null && dwList.size() > 0) {
+                if (dwList.get(dwList.size() - 1).getDt() < (time + 10800)) {
+                    for (DailyWeather dw : dwList) {
+                        if (dw.getDt() < time) {
+                            //https://openweathermap.org/weather-conditions
+                            int temp = 0;
+                            if(hour < 9){
+                                temp = (int) dw.getTemp().getMorn();
+                            } else if (hour < 18){
+                                temp = (int) dw.getTemp().getDay();
+                            } else{
+                                temp = (int) dw.getTemp().getEve();
+                            }
+                            if (((dw.getWeather().getId() >= 800 && dw.getWeather().getId() < 900)
+                                    || (dw.getWeather().getId() > 950 && dw.getWeather().getId() < 957))
+                                    && temp > 15) {
+                                sportGroupForecast = new SportGroupForecast(SportGroup.OUTSIDE, dw, false);
+                            } else {
+                                sportGroupForecast = new SportGroupForecast(SportGroup.INSIDE, dw, false);
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        //no forecast, just stay inside
+        if(sportGroupForecast == null){
+            sportGroupForecast = new SportGroupForecast(SportGroup.INSIDE, null, false);
+        }
+        return sportGroupForecast;
     }
 
     private String makeUri(String uri, String parameters) {
