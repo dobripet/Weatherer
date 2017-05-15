@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Created by Petr on 5/15/2017.
  */
-public class DailyWeather {
+public class DailyWeather extends AWeather {
     private Weather weather;
     private Temp temp;
     private float humidity;

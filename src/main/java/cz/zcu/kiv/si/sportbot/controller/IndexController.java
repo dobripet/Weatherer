@@ -15,7 +15,11 @@
  *******************************************************************************/ 
 package cz.zcu.kiv.si.sportbot.controller;
 
+import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
+import cz.zcu.kiv.si.sportbot.dataLoader.enums.Week;
 import cz.zcu.kiv.si.sportbot.service.BasicService;
+import cz.zcu.kiv.si.sportbot.utils.TimePassedException;
+import cz.zcu.kiv.si.sportbot.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +34,12 @@ public class IndexController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
+        try {
+            Utils.getUnixTimeFromDate(5, Day.SUNDAY, Week.THIS);
+        } catch (TimePassedException e) {
+            e.printStackTrace();
+        }
+
         return basicService.getIndex();
     }
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by Petr on 5/15/2017.
  */
-public class CurrentWeather implements Serializable{
+public class CurrentWeather extends AWeather{
     private Weather weather;
     private Main main;
     private Wind wind;
