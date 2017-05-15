@@ -1,5 +1,10 @@
 package cz.zcu.kiv.si.sportbot.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import cz.zcu.kiv.si.sportbot.model.CurrentWeather;
+import cz.zcu.kiv.si.sportbot.model.Forecast;
+import cz.zcu.kiv.si.sportbot.model.ForecastDaily;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
@@ -20,20 +25,59 @@ public class WeatherServiceOpenWeatherApi implements WeatherService {
     private static final String FORECAST = "forecast";
     private static final String FORECAST_DAILY = "forecast/daily";
 
-
+    private CurrentWeather currentWeather;
+    private long currentTime;
+    private Forecast forecast;
+    private long forecastTime;
+    private ForecastDaily daily;
+    private long dailyTime;
+    private ObjectMapper mapper = new ObjectMapper();
     @Override
     public String getCurrentWeather() {
-        return new RestTemplate().getForObject(makeUri(CURRENT, null), String.class);
+        // 30 min cache
+        long now = System.currentTimeMillis();
+        if(currentWeather == null || now - currentTime > 30000){
+            currentTime = now;
+            currentWeather = new RestTemplate().getForObject(makeUri(CURRENT, null), CurrentWeather.class);
+        }
+        try {
+            return mapper.writeValueAsString(currentWeather);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     @Override
     public String getWeatherForecast() {
-        return new RestTemplate().getForObject(makeUri(FORECAST, null), String.class);
+        // 2hours cache
+        long now = System.currentTimeMillis();
+        if(forecast == null || now - forecastTime > 120000){
+            forecastTime = now;
+            forecast = new RestTemplate().getForObject(makeUri(FORECAST, null), Forecast.class);
+        }
+        try {
+            return mapper.writeValueAsString(forecast);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     @Override
     public String getWeatherForecastDaily() {
-        return new RestTemplate().getForObject(makeUri(FORECAST_DAILY, null), String.class);
+        // 12hours cache
+        long now = System.currentTimeMillis();
+        if(daily == null || now - dailyTime > 720000){
+            dailyTime = now;
+            daily = new RestTemplate().getForObject(makeUri(FORECAST_DAILY, null), ForecastDaily.class);
+        }
+        try {
+            return mapper.writeValueAsString(daily);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     private String makeUri(String uri, String parameters) {

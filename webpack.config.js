@@ -35,6 +35,7 @@ module.exports = function(){
         entry: {
             app: './src/main/js/app.js',
             vendor: [
+                'google-maps-react',
                 'whatwg-fetch',
                 'react',
                 'react-dom',
