@@ -30,6 +30,8 @@ public class DataLoaderImpl implements DataLoader {
     public DataLoaderImpl() {
     }
 
+
+
     @PostConstruct
     public void loadData(){
         sportPlaces =  new ArrayList<>();
@@ -123,7 +125,6 @@ public class DataLoaderImpl implements DataLoader {
 
                             for (int i = open.getValue().getFrom(); i < open.getValue().getTo(); i++) {
                                 if(reservation) {
-
                                     if (generator.generate()) openingTimes.add(new OpeningTime(i, i + 1));
                                 }else {
                                     openingTimes.add(new OpeningTime(i, i + 1));

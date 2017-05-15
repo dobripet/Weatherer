@@ -1,6 +1,7 @@
 package cz.zcu.kiv.si.sportbot.dataLoader.object;
 
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
+import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,8 @@ public class SportPlace {
     private double lon;
     private double lat;
     private double z;
+
+    private Double priority;
 
     private Map<Day,OpeningTime> openingTime;
     private List<Sport> sports;
@@ -107,9 +110,18 @@ public class SportPlace {
         this.z = z;
     }
 
+    public Double getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Double priority) {
+        this.priority = priority;
+    }
+
     @Override
     public String toString() {
-        return "SportPlace{" +
+        return "SportPlace{"+
+                "priority"+ priority+
                 "address='" + address + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +

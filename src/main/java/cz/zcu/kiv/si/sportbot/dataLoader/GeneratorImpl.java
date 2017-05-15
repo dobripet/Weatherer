@@ -15,6 +15,8 @@ public class GeneratorImpl implements Generator {
     @Override
     public boolean generate() {
         Random rn = new Random();
-        return !(rn.nextDouble() > FALSE_PROBABILITY);
+        double d = rn.nextDouble();
+        boolean bol = (d > FALSE_PROBABILITY);
+        return bol;
     }
 }

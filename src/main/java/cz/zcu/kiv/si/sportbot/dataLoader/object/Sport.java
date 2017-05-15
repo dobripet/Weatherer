@@ -61,10 +61,10 @@ public class Sport {
     @Override
     public String toString() {
         return "Sport{" +
-                "freeTime=" + freeTime +
-                ", sportType=" + sportType +
+                "sportType=" + sportType +
                 ", sportGroup=" + sportGroup +
                 ", price=" + price +
+                ", freeTime=" + freeTime +
                 '}';
     }
 }
