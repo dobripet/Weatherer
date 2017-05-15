@@ -23,97 +23,113 @@
 		 {  
             "bosu":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "bodyforming":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "deep work":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "flowin":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "chi-toning":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "cycling":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "joga":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "jumping":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "k2":{  
                "price":120,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "kruhovy trenink":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "cycling":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "joga":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "pilates":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "piloxing":{  
                "price":120,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "port de bras":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "zumba":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          }
 	  ]

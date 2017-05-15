@@ -16,6 +16,7 @@ public class OpeningTime {
     public OpeningTime() {
     }
 
+
     public int getFrom() {
         return from;
     }
@@ -30,5 +31,13 @@ public class OpeningTime {
 
     public void setTo(int to) {
         this.to = to;
+    }
+
+    @Override
+    public String toString() {
+        return "OpeningTime{" +
+                "from=" + from +
+                ", to=" + to +
+                '}';
     }
 }

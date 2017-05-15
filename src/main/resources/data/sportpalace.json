@@ -23,79 +23,92 @@
          {  
             "squash":{  
                "price":220,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "badminton":{  
                "price":200,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "fitness":{  
                "price":70,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "bosu":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "bodystyling":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "bodyforming":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "powerjoga":{
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "tabata":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "pilates":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "port de bras":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "thaibox":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "kruhovy trenink":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "chi-toning":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          }
       ]

@@ -23,31 +23,36 @@
          {  
             "core":{
                "price":90,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "workout":{
                "price":90,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "hiit":{
                "price":90,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {
             "trx":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "fitness":{
                "price":70,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          }
       ]

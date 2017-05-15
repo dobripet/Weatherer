@@ -23,13 +23,15 @@
       {
         "fitness":{
           "price":60,
-          "outside":false
+          "outside":false,
+          "reservation":true
         }
       },
       {
         "kardio":{
           "price":60,
-          "outside":false
+          "outside":false,
+          "reservation":true
         }
       }
     ]

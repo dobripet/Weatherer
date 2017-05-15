@@ -23,13 +23,15 @@
          {  
             "crossfit":{
                "price":200,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "posilovna":{
                "price":200,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          }
       ]

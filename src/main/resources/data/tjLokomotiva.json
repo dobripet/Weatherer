@@ -23,91 +23,106 @@
          {  
             "tenis":{
                "price":140,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {
             "tenis":{
                "price":390,
-               "outside":true
+               "outside":true,
+               "reservation":true
             }
          },
          {
             "squash":{
                "price":200,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "bowling":{
                "price":275,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "fitness":{
                "price":100,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "hala":{
                "price":200,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "badminton":{
                "price":150,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "horolezecka stena":{
                "price":80,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "aerobic":{
                "price":100,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "golf":{
                "price":250,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "beach volejbal":{
                "price":130,
-               "outside":true
+               "outside":true,
+               "reservation":true
             }
          },
          {
             "futsal":{
                "price":150,
-               "outside":true
+               "outside":true,
+               "reservation":true
             }
          },
          {
             "basketball":{
                "price":150,
-               "outside":true
+               "outside":true,
+               "reservation":true
             }
          },
          {
             "nohejball":{
                "price":150,
-               "outside":true
+               "outside":true,
+               "reservation":true
             }
          },
          {
             "volejbal":{
                "price":150,
-               "outside":true
+               "outside":true,
+               "reservation":true
             }
          }
       ]

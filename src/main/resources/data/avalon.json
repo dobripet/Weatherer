@@ -23,55 +23,64 @@
          {  
             "fitness":{  
                "price":100,
-                "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {  
             "crossfit":{  
                "price":100,
-                "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "fitbox":{  
                "price":100,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "zumba":{  
                "price":100,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "hiit":{  
                "price":100,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "kickbox":{  
                "price":100,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "box":{  
                "price":100,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "sebeobrana":{  
                "price":100,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "cyklistika":{
                "price":100,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          }
       ]

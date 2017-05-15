@@ -1,0 +1,39 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Bazen Slovany",
+         "address":"Náměstí Gen. Píky 42, 326 00 Plzeň",
+         "phone":"377 240 306",
+         "email":"info@bazenslovany.cz",
+         "url":"http://www.bazenslovany.cz",
+         "lat":49.7367485,
+         "lon":13.3952834,
+         "z":17
+      },
+      "open":{  
+         "monday":[6, 21],
+         "tuesday":[6, 21],
+         "wednesday":[6, 21],
+         "thursday":[6, 21],
+         "friday":[6, 21],
+         "saturday":[9, 20],
+         "sunday":[9, 20]
+      },
+      "sport":[
+         {
+            "plavani":{
+               "price":100,
+               "outside":false,
+               "reservation":false
+            }
+         },
+         {
+            "plavani":{
+               "price":100,
+               "outside":true,
+               "reservation":false
+            }
+         }
+      ]
+   }
+}

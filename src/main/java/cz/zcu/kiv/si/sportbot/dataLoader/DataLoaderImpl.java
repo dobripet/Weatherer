@@ -6,7 +6,7 @@ import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportType;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.OpeningTime;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.Sport;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.SportPlace;
-import jdk.nashorn.internal.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.core.io.ResourceLoader;
@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Marek Rasocha
@@ -28,7 +25,8 @@ public class DataLoaderImpl implements DataLoader {
     private static final String PATH = "data";
     private List<SportPlace> sportPlaces;
 
-
+    @Autowired
+    private Generator generator;
     public DataLoaderImpl() {
     }
 
@@ -38,7 +36,6 @@ public class DataLoaderImpl implements DataLoader {
         ClassLoader classLoader = ResourceLoader.class.getClassLoader();
         File file = new File(classLoader.getResource(PATH).getFile());
         listFilesForFolder(file);
-        System.out.println(sportPlaces);
     }
 
     private void listFilesForFolder(final File folder) {
@@ -99,7 +96,7 @@ public class DataLoaderImpl implements DataLoader {
             if (entry.getKey().equalsIgnoreCase("sport")){
                 List<Sport> sportList = new ArrayList<>();
                 for(Object sports : ( (List) entry.getValue())){
-                    sportList.add(parseSport((Map<String, Object>)sports));
+                    sportList.add(parseSport((Map<String, Object>)sports,sportPlace.getOpeningTime()));
                 }
                 sportPlace.setSports(sportList);
             }
@@ -107,7 +104,7 @@ public class DataLoaderImpl implements DataLoader {
         return sportPlace;
     }
 
-    private Sport parseSport(Map<String, Object> sportMap) {
+    private Sport parseSport(Map<String, Object> sportMap, Map<Day,OpeningTime> openingTime) {
         Sport sport = new Sport();
         for(Map.Entry<String,Object> entry : sportMap.entrySet()){
             sport.setSportType(getSportType(entry.getKey()));
@@ -116,6 +113,26 @@ public class DataLoaderImpl implements DataLoader {
                 if (sportProps.getKey().equalsIgnoreCase("outside")){
                     SportGroup group = (boolean) sportProps.getValue() ? SportGroup.OUTSIDE : SportGroup.INSIDE;
                     sport.setSportGroup(group);
+                }
+                if(sportProps.getKey().equalsIgnoreCase("reservation")){
+                    boolean reservation = (boolean) sportProps.getValue();
+                    Map<Day,List<OpeningTime>> freeTime = new HashMap<>();
+                    for(Map.Entry<Day,OpeningTime> open : openingTime.entrySet()) {
+                        List<OpeningTime> openingTimes = new ArrayList<>();
+                        if(open.getValue()!=null) {
+
+                            for (int i = open.getValue().getFrom(); i < open.getValue().getTo(); i++) {
+                                if(reservation) {
+
+                                    if (generator.generate()) openingTimes.add(new OpeningTime(i, i + 1));
+                                }else {
+                                    openingTimes.add(new OpeningTime(i, i + 1));
+                                }
+                            }
+                        }
+                        freeTime.put(open.getKey(), openingTimes);
+                    }
+                    sport.setFreeTime(freeTime);
                 }
             }
         }

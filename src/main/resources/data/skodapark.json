@@ -23,61 +23,71 @@
          {  
             "skate park":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":false
             }
          },
          {  
             "beach volejbal":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          },
 		 {  
             "hokejbal":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          },
 		 {  
             "nohejbal":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          },
 		 {  
             "streetball":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          },
 		 {  
             "in-line":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":false
             }
          },
          {  
             "horolezecka stena":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          },
 		 {  
             "lanove centrum":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          },
 		 {  
             "posilovna":{  
                "price":0,
-                "outside":true
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "detske hriste":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":false
             }
          }
       ]

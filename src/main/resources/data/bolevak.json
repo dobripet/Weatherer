@@ -1,0 +1,46 @@
+{  
+   "sportplace":{  
+      "contact":{  
+         "name":"Bolevak",
+         "address":"U Velkého rybníka, 323 00 Plzeň 1",
+         "phone":"604 822 221",
+         "email":"",
+         "url":"www.bolevak.cz",
+         "lat":49.7759803,
+         "lon":13.3910814,
+         "z":17
+      },
+      "open":{  
+         "monday":[0, 24],
+         "tuesday":[0, 24],
+         "wednesday":[0, 24],
+         "thursday":[0, 24],
+         "friday":[0, 24],
+         "saturday":[0, 24],
+         "sunday":[0, 24]
+      },
+      "sport":[  
+         {  
+            "cyklistika":{
+               "price":0,
+                "outside":true,
+               "reservation":false
+            }
+         },
+         {  
+            "beh":{
+               "price":0,
+                "outside":true,
+               "reservation":false
+            }
+         },
+         {
+            "plavani":{
+               "price":0,
+               "outside":true,
+               "reservation":false
+            }
+         }
+      ]
+   }
+}

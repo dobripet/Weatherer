@@ -23,61 +23,71 @@
          {  
             "squash":{  
                "price":230,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "power plate":{  
                "price":245,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "heat":{  
                "price":140,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "trx":{  
                "price":110,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "ploche bricho":{  
                "price":85,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "flexibar":{  
                "price":85,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "powerjoga":{  
                "price":85,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "kruhový trénink":{  
                "price":85,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "joga":{  
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "deep work":{  
                "price":100,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          }
       ]

@@ -1,7 +1,11 @@
 package cz.zcu.kiv.si.sportbot.dataLoader.object;
 
+import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportGroup;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportType;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Marek Rasocha
@@ -11,6 +15,7 @@ public class Sport {
     private SportType sportType;
     private SportGroup sportGroup;
     private int price;
+    private Map<Day,List<OpeningTime>> freeTime;
 
     public Sport() {
     }
@@ -19,6 +24,14 @@ public class Sport {
         this.price = price;
         this.sportGroup = sportGroup;
         this.sportType = sportType;
+    }
+
+    public Map<Day,List<OpeningTime>> getFreeTime() {
+        return freeTime;
+    }
+
+    public void setFreeTime(  Map<Day,List<OpeningTime>> freeTime) {
+        this.freeTime = freeTime;
     }
 
     public int getPrice() {
@@ -48,9 +61,10 @@ public class Sport {
     @Override
     public String toString() {
         return "Sport{" +
-                "price=" + price +
+                "freeTime=" + freeTime +
                 ", sportType=" + sportType +
                 ", sportGroup=" + sportGroup +
+                ", price=" + price +
                 '}';
     }
 }

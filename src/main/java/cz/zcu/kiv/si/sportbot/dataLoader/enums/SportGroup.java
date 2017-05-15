@@ -30,7 +30,7 @@ public enum SportGroup {
            SportType.KRUHOVY_TRENINK,SportType.LANOVE_CENTRUM, SportType.MINIGOLF, SportType.PILATES, SportType.PILOXING, SportType.PLOCHE_BRICHO,
            SportType.PORT_DE_BRAS,SportType.POSILOVNA, SportType.POWER_PLATE, SportType.POWERJOGA, SportType.PUMPING, SportType.SEBEOBRANA,
            SportType.SKATE_PARK,SportType.STEP, SportType.TABATA, SportType.TEHOTENSKE_CVICENI, SportType.THAILBOX, SportType.TRANPOLINA,
-           SportType.TRX,SportType.WORKOUT, SportType.ZUMBA
+           SportType.TRX,SportType.WORKOUT, SportType.ZUMBA, SportType.BEH, SportType.PLAVANI
     )),
     TEAM(Arrays.asList(
            SportType.BADMINTON,SportType.BASKETBALL, SportType.BEACH_VOLEJBAL, SportType.FUTSAL,SportType.HAZENA,SportType.HOKEJBAL,

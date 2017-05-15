@@ -23,37 +23,43 @@
          {  
             "skate park":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":false
             }
          },
          {  
             "beach volejbal":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          },
 		 {  
             "jogging":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          },
 		 {  
             "posilovna":{  
                "price":0,
-                "outside":true
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "in-line":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":false
             }
          },
          {  
             "horolezecka stena":{  
                "price":0,
-                "outside":true
+                "outside":true,
+               "reservation":true
             }
          }
       ]

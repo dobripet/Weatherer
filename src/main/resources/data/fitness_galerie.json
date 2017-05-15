@@ -23,85 +23,99 @@
          {  
             "trx":{
                "price":80,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {  
             "bosu":{
                "price":90,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
 		 {  
             "joga":{
                "price":90,
-                "outside":false
+                "outside":false,
+               "reservation":true
             }
          },
          {
             "dance":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "bodyforming":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "kruhovy trenink":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "flowin":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "trampolina":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "workout":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "cycling":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "gts":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "tehotenske cviceni":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "fitness":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          },
          {
             "kardio":{
                "price":90,
-               "outside":false
+               "outside":false,
+               "reservation":true
             }
          }
       ]
