@@ -62,6 +62,7 @@ class App extends React.Component{
     }
     handleUserAnswer(answer){
         let lastMsg = this.state.messages[this.state.messages.length -1];
+        this.setState({messages: [...this.state.messages, {bot: false, text:answer, data: null, context: null}], disabledInput: true, error: false});
         fetch(API+'bot', {
                 method: 'POST',
                 headers: {
