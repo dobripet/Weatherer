@@ -14,20 +14,6 @@ public class Context {
     private String conversationId;
     @JsonProperty("system")
     private MySystem system;
-    @JsonProperty("AConoff")
-    private String AConoff;
-    @JsonProperty("lightonoff")
-    private String lightonoff;
-    @JsonProperty("musiconoff")
-    private String musiconoff;
-    @JsonProperty("appl_action")
-    private String applAction;
-    @JsonProperty("heateronoff")
-    private String heateronoff;
-    @JsonProperty("volumeonoff")
-    private String volumeonoff;
-    @JsonProperty("wipersonoff")
-    private String wipersonoff;
     @JsonProperty("default_counter")
     private int defaultCounter;
 
@@ -37,11 +23,19 @@ public class Context {
     @JsonProperty("day_spec")
     private String daySpec;
     @JsonProperty("time")
-    private int time;
+    private Integer time;
     @JsonProperty("sports")
     private List<String> sports;
     @JsonProperty("sportgroups")
     private List<String> sportgroups;
+    @JsonProperty("find_weather")
+    private Boolean findWeather;
+    @JsonProperty("find_where")
+    private Boolean findWhere;
+    @JsonProperty("find_when")
+    private Boolean findWhen;
+    @JsonProperty("find_price")
+    private Boolean findPrice;
 
     public boolean isAction() {
         return action;
@@ -49,22 +43,6 @@ public class Context {
 
     public void setAction(boolean action) {
         this.action = action;
-    }
-
-    public String getAConoff() {
-        return AConoff;
-    }
-
-    public void setAConoff(String AConoff) {
-        this.AConoff = AConoff;
-    }
-
-    public String getApplAction() {
-        return applAction;
-    }
-
-    public void setApplAction(String applAction) {
-        this.applAction = applAction;
     }
 
     public String getConversationId() {
@@ -99,29 +77,6 @@ public class Context {
         this.defaultCounter = defaultCounter;
     }
 
-    public String getHeateronoff() {
-        return heateronoff;
-    }
-
-    public void setHeateronoff(String heateronoff) {
-        this.heateronoff = heateronoff;
-    }
-
-    public String getLightonoff() {
-        return lightonoff;
-    }
-
-    public void setLightonoff(String lightonoff) {
-        this.lightonoff = lightonoff;
-    }
-
-    public String getMusiconoff() {
-        return musiconoff;
-    }
-
-    public void setMusiconoff(String musiconoff) {
-        this.musiconoff = musiconoff;
-    }
 
     public List<String> getSportgroups() {
         return sportgroups;
@@ -147,28 +102,44 @@ public class Context {
         this.system = system;
     }
 
-    public int getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
-    public String getVolumeonoff() {
-        return volumeonoff;
+    public Boolean getFindPrice() {
+        return findPrice;
     }
 
-    public void setVolumeonoff(String volumeonoff) {
-        this.volumeonoff = volumeonoff;
+    public void setFindPrice(Boolean findPrice) {
+        this.findPrice = findPrice;
     }
 
-    public String getWipersonoff() {
-        return wipersonoff;
+    public Boolean getFindWeather() {
+        return findWeather;
     }
 
-    public void setWipersonoff(String wipersonoff) {
-        this.wipersonoff = wipersonoff;
+    public void setFindWeather(Boolean findWeather) {
+        this.findWeather = findWeather;
+    }
+
+    public Boolean getFindWhen() {
+        return findWhen;
+    }
+
+    public void setFindWhen(Boolean findWhen) {
+        this.findWhen = findWhen;
+    }
+
+    public Boolean getFindWhere() {
+        return findWhere;
+    }
+
+    public void setFindWhere(Boolean findWhere) {
+        this.findWhere = findWhere;
     }
 
     @JsonProperty("action")

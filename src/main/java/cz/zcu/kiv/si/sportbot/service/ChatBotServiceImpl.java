@@ -4,17 +4,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.watson.developer_cloud.conversation.v1.ConversationService;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageRequest;
 import com.ibm.watson.developer_cloud.conversation.v1.model.MessageResponse;
-import cz.zcu.kiv.si.sportbot.bot.BotResponse;
 import cz.zcu.kiv.si.sportbot.bot.Context;
 import cz.zcu.kiv.si.sportbot.dataLoader.DataSorter;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportGroup;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportType;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Week;
-import cz.zcu.kiv.si.sportbot.dataLoader.object.ClientResponse;
+import cz.zcu.kiv.si.sportbot.model.ClientResponse;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.OpeningTime;
-import cz.zcu.kiv.si.sportbot.dataLoader.object.Sport;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.SportPlace;
+import cz.zcu.kiv.si.sportbot.model.Data;
 import cz.zcu.kiv.si.sportbot.model.SportGroupForecast;
 import cz.zcu.kiv.si.sportbot.utils.TimePassedException;
 import cz.zcu.kiv.si.sportbot.utils.Utils;
@@ -47,7 +46,7 @@ public class ChatBotServiceImpl implements ChatBotService{
 
     public ClientResponse sendMessage(Map<String,Object> previousContext,String text) {
         ConversationService service = new ConversationService("2017-04-21");
-        service.setUsernameAndPassword("{username}", "{password}");
+        service.setUsernameAndPassword("40fc984f-8da4-4bbc-9edb-18df99a346aa", "ny686uBZUy7d");
         service.setEndPoint(url);
         MessageRequest newMessage;
         if (previousContext==null) {
@@ -74,51 +73,97 @@ public class ChatBotServiceImpl implements ChatBotService{
             List<String> sportsGroup = context.getSportgroups();
             String day = context.getDay();
             String daySpec = context.getDaySpec();
-            int time = context.getTime();
+            Integer time = context.getTime();
             try {
-                find(sports,sportsGroup,day,daySpec,time);
+               clientResponse.setData(find(sports, sportsGroup, day, daySpec, time));
             } catch (TimePassedException e) {
-                clientResponse.setBug(true);
-                clientResponse.setErrorMessage("Chyba pri parsovani casu:" +e);
+                clientResponse.setError(true);
             }
         }
-        clientResponse.setContext(response.getContext());
-        clientResponse.setBotResponse(response.getOutput().get("text").toString());
+        Map<String,Object> responseContext = response.getContext();
+        response.getContext();
+        clientResponse.setContext(responseContext);
+        clientResponse.setText(response.getOutput().get("text").toString());
         return clientResponse;
     }
-
-    private List<SportPlace> find(List<String> sportsList, List<String> sportsGroupList, String dayString, String daySpecString, int timeInt) throws TimePassedException {
-        List<SportType> sports = new ArrayList<>();
-        for (String str : sportsList){
-            sports.add(SportType.valueOf(str));
-        }
-        List<SportGroup> sportGroup = new ArrayList<>();
-        for (String str : sportsGroupList){
-            sportGroup.add(getSportGroup(str));
-        }
+/**/
+    private List<Data> find(List<String> sportsList, List<String> sportsGroupList, String dayString, String daySpecString, Integer timeInteger) throws TimePassedException {
+        List<Data> datas = new ArrayList<>();
+        List<SportType> sports = getSportType(sportsList);
+        dayString = dayString==null ? "" : dayString;
+        List<SportGroup> sportGroup = getSportGroup(sportsGroupList);
         List<Day> days = getListDay(Day.valueOf(dayString));
         Week week = Week.valueOf(daySpecString);
-        List<SportGroupForecast> forecastList = new ArrayList<>();
-        List<SportGroup> sportGroup2 = new ArrayList<>();
-        for(Day d : days){
-            SportGroupForecast sgp;
-            forecastList.add(sgp=weatherService.getSportGroupAndForecastForDate(timeInt, d, week));
-            if(!sportGroup.contains(sgp.getSportGroup())) sportGroup.add(sgp.getSportGroup());
+        OpeningTime openingTime = new OpeningTime();
+        int timeInt;
+        if (timeInteger==null){
+            timeInt = 12;
+            openingTime.setFrom(0);
+            openingTime.setFrom(24);
+        }else{
+            timeInt = timeInteger.intValue();
+            openingTime.setFrom(timeInteger.intValue());
+            openingTime.setFrom(timeInteger.intValue()+1);
         }
-        List<SportGroup> search = !sportGroup.isEmpty() ? sportGroup : sportGroup2;
-        List<SportPlace> sportPlaces = dataFinder.findSportInGroup(search);
-        sportPlaces = dataSorter.sortByPriority(sportPlaces,sports,days,new OpeningTime(timeInt,timeInt+1));
-        return sportPlaces;
+        for (Day d : days) {
+            SportGroupForecast sgp;
+            Data data = new Data();
+            sgp = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
+            data.setaWeather(sgp.getWeather());
+            data.setCurrent(sgp.isCurrent());
+            data.setDay(d);
+            List<SportGroup> search = !sportGroup.isEmpty() ? sportGroup : Arrays.asList(sgp.getSportGroup());
+            data.setPlaces(getSportPlacesByGroup(search,d,openingTime));
+            datas.add(data);
+        }
+        return datas;
 
     }
 
+    private List<SportPlace> getSportPlacesByGroup(List<SportGroup> searchGroup, Day day, OpeningTime time){
+        List<SportType> sportTypes = new ArrayList<>(getSportTypes(searchGroup));
+        List<SportPlace> sportPlaces = dataFinder.findSport(sportTypes);
+        sportPlaces = dataSorter.sortByPriority(sportPlaces,sportTypes,Arrays.asList(day),time);
+        return sportPlaces;
+    }
+    private List<SportType> getSportType(List<String> sportsList){
+        List<SportType> sports = new ArrayList<>();
+        if (sportsList!=null) {
+            for (String str : sportsList) {
+                sports.add(SportType.valueOf(str));
+            }
+        }
+        return sports;
+    }
+
+    private List<SportGroup> getSportGroup(List<String> sportsGroupList){
+        List<SportGroup> sportGroup = new ArrayList<>();
+        if (sportsGroupList!=null) {
+            for (String str : sportsGroupList) {
+                sportGroup.add(getSportGroup(str));
+            }
+        }
+        return sportGroup;
+    }
+    private Set<SportType> getSportTypes(List<SportGroup> sportGroups) {
+        Set<SportType> sportTypes = new HashSet<>();
+        for(SportGroup group : sportGroups){
+            sportTypes.addAll(group.getSportTypes());
+        }
+        return sportTypes;
+    }
     private List<Day> getListDay(Day day){
         List<Day> list = new ArrayList<>();
-        if (day==Day.WEEKEND){
-            list.add(Day.SATURDAY);
-            list.add(Day.SUNDAY);
+        if(day!=null ) {
+            if (day == Day.WEEKEND) {
+                list.add(Day.SATURDAY);
+                list.add(Day.SUNDAY);
+            } else {
+                list.add(Utils.getWeekDay(day));
+            }
+            return list;
         }else{
-            list.add(Utils.getWeekDay(day));
+            list = Arrays.asList(Day.values());
         }
         return list;
     }

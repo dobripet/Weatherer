@@ -1,6 +1,6 @@
 package cz.zcu.kiv.si.sportbot.service;
 
-import cz.zcu.kiv.si.sportbot.dataLoader.object.ClientResponse;
+import cz.zcu.kiv.si.sportbot.model.ClientResponse;
 
 import java.util.Map;
 

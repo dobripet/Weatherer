@@ -15,13 +15,8 @@
  *******************************************************************************/ 
 package cz.zcu.kiv.si.sportbot.controller;
 
-import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
-import cz.zcu.kiv.si.sportbot.dataLoader.enums.Week;
-import cz.zcu.kiv.si.sportbot.dataLoader.object.ClientResponse;
-import cz.zcu.kiv.si.sportbot.service.BasicService;
+import cz.zcu.kiv.si.sportbot.model.ClientResponse;
 import cz.zcu.kiv.si.sportbot.service.ChatBotService;
-import cz.zcu.kiv.si.sportbot.utils.TimePassedException;
-import cz.zcu.kiv.si.sportbot.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,7 +33,7 @@ public class BotController {
     @Autowired
     ChatBotService chatBotService;
 
-    @RequestMapping()
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ClientResponse communicate(@RequestBody Map<String,Object> context,@RequestBody String userInput) {
         return chatBotService.sendMessage(context, userInput);
