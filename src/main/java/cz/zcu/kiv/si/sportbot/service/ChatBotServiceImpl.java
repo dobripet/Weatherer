@@ -59,7 +59,7 @@ public class ChatBotServiceImpl implements ChatBotService{
                     .context(previousContext)
                     .build();
         }
-        String workspaceId = "25dfa8a0-0263-471b-8980-317e68c30488";
+        String workspaceId = "40fc984f-8da4-4bbc-9edb-18df99a346aa";
 
         MessageResponse response = service
                 .message(workspaceId, newMessage)
