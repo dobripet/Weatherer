@@ -38,9 +38,9 @@ public class BotController {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
+    //@CrossOrigin(origins = "http://localhost:8080")
     public ClientResponse communicate(@RequestBody String body){
         try {
             ClientRequest request = objectMapper.readValue(body, ClientRequest.class);
