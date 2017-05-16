@@ -21,6 +21,7 @@ import cz.zcu.kiv.si.sportbot.utils.Utils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
@@ -28,6 +29,7 @@ import java.util.*;
  * @author Marek Rasocha
  *         date 02.05.2017.
  */
+@Service
 public class ChatBotServiceImpl implements ChatBotService{
     private static final Logger logger = LogManager.getLogger(ChatBotServiceImpl.class.getName());
     private String url = "https://gateway.watsonplatform.net/conversation/api";
