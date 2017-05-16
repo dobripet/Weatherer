@@ -14,7 +14,8 @@ public enum Day {
     SUNDAY("sunday"),
     TOMORROW("tomorrow"),
     TODAY("today"),
-    DATOMORROW("datomorrow");
+    DATOMORROW("datomorrow"),
+    WEEKEND("weekend");
 
 
     private String name;

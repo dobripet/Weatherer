@@ -43,10 +43,10 @@ public interface DataFinder {
     List<SportPlace> findInsideSport();
     /**
      * nejde sporty ze skupiny
-     * @param sportGroup sport type
+     * @param sportGroups sport type
      * @return list nalazenych sportplace
      */
-    List<SportPlace> findSportInGroup(SportGroup sportGroup);
+    List<SportPlace> findSportInGroup(List<SportGroup> sportGroups);
 
     /**
      * nejde sporty ze skupiny

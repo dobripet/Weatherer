@@ -22,9 +22,9 @@ public class DataSorterImpl implements DataSorter {
     public DataSorterImpl() {
     }
 
-    public List<SportPlace> sortByPriority(@NotNull List<SportPlace> places, SportType sportType, @NotNull List<Day> days, OpeningTime openingTime){
+    public List<SportPlace> sortByPriority(@NotNull List<SportPlace> places, List<SportType> sportTypes, @NotNull List<Day> days, OpeningTime openingTime){
         for (SportPlace pl : places){
-            pl.setPriority(getPriority(pl,sportType, days,openingTime));
+            pl.setPriority(getPriority(pl,sportTypes, days,openingTime));
         }
         return sort(places);
     }
@@ -38,11 +38,11 @@ public class DataSorterImpl implements DataSorter {
         });
         return places;
     }
-    private double getPriority(SportPlace sportPlace,SportType sportType, List<Day> days, OpeningTime openingTime){
+    private double getPriority(SportPlace sportPlace,List<SportType> sportTypes, List<Day> days, OpeningTime openingTime){
         double priority = 0;
         if (sportPlace.getSports()!=null){
             for(Sport sport : sportPlace.getSports()){
-                if(sportType==null || sportType==sport.getSportType()) {
+                if(sportTypes.isEmpty() || sportTypes.contains(sport.getSportType())) {
                     double priorityPom = getPriorityOfSport(sport, days, openingTime);
                     if (priorityPom > priority) priority = priorityPom;
                 }

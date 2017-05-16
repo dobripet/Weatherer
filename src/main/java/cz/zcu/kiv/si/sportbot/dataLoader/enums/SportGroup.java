@@ -11,18 +11,18 @@ import java.util.List;
  *         date 14.05.2017.
  */
 public enum SportGroup {
-    OUTSIDE(new ArrayList<SportType>()),
-    INSIDE(new ArrayList<SportType>()),
-    BALL(Arrays.asList(
+    OUTSIDE("outside",new ArrayList<SportType>()),
+    INSIDE("inside", new ArrayList<SportType>()),
+    BALL("ball", Arrays.asList(
             SportType.BADMINTON, SportType.BASKETBALL, SportType.BEACH_VOLEJBAL, SportType.BOWLING, SportType.FUTSAL, SportType.GOLF,
             SportType.HAZENA, SportType.HOKEJBAL, SportType.MINIGOLF, SportType.NOHEJBAL, SportType.SQUASH, SportType.STREETBALL,
             SportType.VOLEJBAL, SportType.TENIS
     )),
-    HALL(Arrays.asList(
+    HALL("hall", Arrays.asList(
             SportType.BADMINTON,SportType.BASKETBALL,SportType.FUTSAL, SportType.HAZENA, SportType.HOKEJBAL, SportType.NOHEJBAL,
             SportType.SQUASH, SportType.VOLEJBAL, SportType.TENIS
     )),
-    INDIVIDUAL(Arrays.asList(
+    INDIVIDUAL("individual", Arrays.asList(
            SportType.AEROBIC,SportType.BODYFORMING, SportType.BODYSTYLING, SportType.BOSU,SportType.BOWLING, SportType.CORE, SportType.CROSSFIT,
            SportType.CYKLISTIKA,SportType.DANCE, SportType.DEEP_WORK, SportType.DETSKE_HRISTE, SportType.FITBOX, SportType.FITNESS, SportType.FLEXIBAR,
            SportType.FLOWIN,SportType.GOLF, SportType.GTS, SportType.GYM, SportType.HIIT, SportType.HOROLEZECKA_STENA, SportType.HEAT,
@@ -32,15 +32,21 @@ public enum SportGroup {
            SportType.SKATE_PARK,SportType.STEP, SportType.TABATA, SportType.TEHOTENSKE_CVICENI, SportType.THAILBOX, SportType.TRANPOLINA,
            SportType.TRX,SportType.WORKOUT, SportType.ZUMBA, SportType.BEH, SportType.PLAVANI
     )),
-    TEAM(Arrays.asList(
-           SportType.BADMINTON,SportType.BASKETBALL, SportType.BEACH_VOLEJBAL, SportType.FUTSAL,SportType.HAZENA,SportType.HOKEJBAL,
-           SportType.NOHEJBAL,SportType.SQUASH, SportType.STREETBALL, SportType.TENIS,SportType.VOLEJBAL
+    TEAM("team", Arrays.asList(
+            SportType.BADMINTON, SportType.BASKETBALL, SportType.BEACH_VOLEJBAL, SportType.FUTSAL, SportType.HAZENA, SportType.HOKEJBAL,
+            SportType.NOHEJBAL, SportType.SQUASH, SportType.STREETBALL, SportType.TENIS, SportType.VOLEJBAL
     ));
 
     private final List<SportType> sportTypes;
+    private final String stringName;
 
-    SportGroup(List<SportType> sportTypes) {
+    SportGroup(String stringName, List<SportType> sportTypes) {
+        this.stringName = stringName;
         this.sportTypes = sportTypes;
+    }
+
+    public String getStringName() {
+        return stringName;
     }
 
     public List<SportType> getSportTypes() {

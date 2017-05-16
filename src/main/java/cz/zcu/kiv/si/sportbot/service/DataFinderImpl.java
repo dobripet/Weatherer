@@ -10,10 +10,7 @@ import cz.zcu.kiv.si.sportbot.dataLoader.object.SportPlace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Marek Rasocha
@@ -135,9 +132,9 @@ public class DataFinderImpl implements DataFinder {
         return sportPlaces;
     }
     @Override
-    public List<SportPlace> findSportInGroup(SportGroup sportGroup){
+    public List<SportPlace> findSportInGroup(List<SportGroup> sportGroups){
         List<SportPlace> sportPlaces = new ArrayList<>();
-        List<SportType> sportTypesInGroup = sportGroup.getSportTypes();
+        Set<SportType> sportTypesInGroup = getSportTypes(sportGroups);
         for (SportPlace sportPlace : dataLoader.getSportPlaces()){
             SportPlace newPlace = getNewSportPlace(sportPlace);
             List<Sport> sports = new ArrayList<>();
@@ -155,6 +152,15 @@ public class DataFinderImpl implements DataFinder {
         }
         return sportPlaces;
     }
+
+    private Set<SportType> getSportTypes(List<SportGroup> sportGroups) {
+        Set<SportType> sportTypes = new HashSet<>();
+        for(SportGroup group : sportGroups){
+            sportTypes.addAll(group.getSportTypes());
+        }
+        return sportTypes;
+    }
+
     public List<SportPlace> findSportFree(){
         List<SportPlace> sportPlaces = new ArrayList<>();
         for (SportPlace sportPlace : dataLoader.getSportPlaces()){
