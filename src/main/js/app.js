@@ -51,7 +51,7 @@ class App extends React.Component{
                 throw new Error();
             }
             console.log(json);
-            this.setState({messages: [...this.state.messages, {bot: true, text:json.text, data: json.data, context: json.context}], disableInput: false, error:false});
+            this.setState({messages: [...this.state.messages, {bot: true, text:json.text, data: json.data, context: json.context}], disabledInput: false, error:false});
         }).catch( error => {
             console.log("ERROR", error);
             this.setState({error:"Něco se pokazilo, zkuste jiný dotaz :(", disabledInput: false});
@@ -79,7 +79,7 @@ class App extends React.Component{
                 throw new Error();
             }
             console.log(json);
-            this.setState({messages: [...this.state.messages, {bot: true, text:json.text, data: json.data, context: json.context}], disableInput: false, error: false});
+            this.setState({messages: [...this.state.messages, {bot: true, text:json.text, data: json.data, context: json.context}], disabledInput: false, error: false});
         }).catch( error => {
             console.log("ERROR", error);
             this.setState({error:"Něco se pokazilo, zkuste jiný dotaz :(", disabledInput: false});
