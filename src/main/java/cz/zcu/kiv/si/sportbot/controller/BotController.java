@@ -24,6 +24,7 @@ import cz.zcu.kiv.si.sportbot.utils.TimePassedException;
 import cz.zcu.kiv.si.sportbot.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,7 +40,7 @@ public class BotController {
 
     @RequestMapping()
     @ResponseBody
-    public ClientResponse communicate(Map<String,Object> context, String userInput) {
-        return chatBotService.sendMessage(context,userInput);
+    public ClientResponse communicate(@RequestBody Map<String,Object> context,@RequestBody String userInput) {
+        return chatBotService.sendMessage(context, userInput);
     }
 }
