@@ -21,5 +21,5 @@ public interface DataSorter {
      * @param openingTime cas muze byt null
      * @return serazeny list
      */
-    List<SportPlace> sortByPriority(@NotNull List<SportPlace> places, List<SportType> sportTypes, @NotNull List<Day> days, OpeningTime openingTime);
+    List<SportPlace> sortByPriority(@NotNull List<SportPlace> places,@NotNull List<SportType> sportTypes, @NotNull List<Day> days, OpeningTime openingTime);
 }
