@@ -12,7 +12,7 @@ import java.util.Map;
  * @author Marek Rasocha
  *         date 14.05.2017.
  */
-public class SportPlace {
+public class SportPlace{
     private String name;
     private String address;
     private String phone;

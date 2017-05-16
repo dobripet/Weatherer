@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.validation.constraints.NotNull;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class DataSorterImpl implements DataSorter {
 
     private List<SportPlace> sorter(List<SportPlace> places){
         Comparator<SportPlace> comparator = new IBMComparator();
-        places.sort(comparator);
+        Collections.sort(places,comparator);
         return places;
     }
     private double getPriority(SportPlace sportPlace,List<SportType> sportTypes, List<Day> days, OpeningTime openingTime){
