@@ -27,10 +27,10 @@ public class DataSorterImpl implements DataSorter {
         for (SportPlace pl : places){
             pl.setPriority(getPriority(pl,sportTypes, days,openingTime));
         }
-        return sort(places);
+        return sorter(places);
     }
 
-    private List<SportPlace> sort(List<SportPlace> places){
+    private List<SportPlace> sorter(List<SportPlace> places){
         places.sort(new Comparator<SportPlace>() {
             @Override
             public int compare(SportPlace o1, SportPlace o2) {
