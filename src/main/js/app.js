@@ -23,41 +23,66 @@ class App extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            messages: [{bot: true, message: "Nazdar, jsem sport robot, co chces vedet?"},
-                {bot: false, message:"Muzu zitra na kolo?"},
-                {bot: true, message:"Muzes, jestli ti nevadi chcavec jak svin."}],
-            disabledInput: true
+            messages: [],
+            disabledInput: true,
+            error: null
         };
         // bindings
         this.handleUserAnswer  = this.handleUserAnswer.bind(this);
-        this.enable = this.enable.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     }
-    enable(){
-        this.setState({messages: [...this.state.messages, {bot:true, message:"Sam ses!", m: true},  {bot:true, message:"Sam ses3!", m: true}], disabledInput:false});
+    handleReset(){
+        this.setState({messages: [], disabledInput: true});
+        fetch(API+'bot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    context: null,
+                    userInput: "a",
+                })
+            }
+        ).then(response =>
+            response.json()
+        ).then(json => {
+            if (json.error) {
+                throw new Error();
+            }
+            console.log(json);
+            this.setState({messages: [...this.state.messages, {bot: true, text:json.text, data: json.data, context: json.context}], disableInput: false});
+        }).catch( error => {
+            console.log("ERROR", error);
+            this.setState({error:"Něco se pokazilo, zkuste jiný dotaz :(", disabledInput: false});
+        });
     }
     componentDidMount(){
-        setTimeout(this.enable, 1);
+        this.handleReset();
     }
     handleUserAnswer(answer){
-        //TODO send request
-        console.log("send request ", answer);
-        this.setState({messages: [...this.state.messages, {bot:false, message:answer}], disabledInput:true});
-        //setTimeout(this.enable, 1000);
-        /*fetch(API+'/weather', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                answer:  answer,
-            })
-        }).then(response => response.json()
-        ).then(json => console.log(json)
-        ).catch( error => console.log("ERROR", error));*/
-        fetch(API+'/weather/forecast/daily'
-        ).then(response => response.json()
-        ).then(json => {console.log(json); this.setState({messages: [...this.state.messages, {bot: true, message: "Pocasi: ",weatherType:"forecast", weather: json}]})}
-        ).catch( error => console.log("ERROR", error));
+        let lastMsg = this.state.messages[this.state.messages.length -1];
+        fetch(API+'/bot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    context: lastMsg.context,
+                    userInput: answer,
+                })
+            }
+        ).then(response =>
+            response.json()
+        ).then(json => {
+            if (json.error) {
+                throw new Error();
+            }
+            console.log(json);
+            this.setState({messages: [...this.state.messages, {bot: true, text:json.text, data: json.data, context: json.context}], disableInput: false});
+        }).catch( error => {
+            console.log("ERROR", error);
+            this.setState({error:"Něco se pokazilo, zkuste jiný dotaz :(", disabledInput: false});
+        });
     }
     /*
      <header>
@@ -67,10 +92,15 @@ class App extends React.Component{
      </header>
      */
     render() {
+        let error = null;
+        if(this.state.error){
+            error = <div className="alert alert-danger">{this.state.error}</div>;
+        }
         return (
             <div>
-                <h2>This is working react app!</h2>
+                <button className="btn btn-warning btn-lg start-over" onClick={this.handleReset}>Začít znovu</button>
                 <div className="container">
+                    {error}
                     <Chat handleUserAnswer={this.handleUserAnswer} messages={this.state.messages} disabledInput={this.state.disabledInput}/>
                 </div>
             </div>

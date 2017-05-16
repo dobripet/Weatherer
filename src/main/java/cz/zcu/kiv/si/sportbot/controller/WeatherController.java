@@ -58,4 +58,98 @@ public class WeatherController {
 
         //return weatherService.getWeatherForecastDaily();
     }
+    @RequestMapping(value = "/test")
+    @CrossOrigin(origins = "http://localhost:8080")
+    public String test() {
+    return "{  \n" +
+            "   \"sportplace\":{  \n" +
+            "      \"contact\":{  \n" +
+            "         \"name\":\"Avalon Fitness Center\",\n" +
+            "         \"address\":\"PODĚBRADOVA 2842/1, 301 00 Plzeň\",\n" +
+            "         \"phone\":\"725 428 141\",\n" +
+            "         \"email\":\"info@avalonfitness.cz\",\n" +
+            "         \"url\":\"http://www.avalonfitness.cz\",\n" +
+            "         \"lat\":49.746232,\n" +
+            "         \"lon\":13.368771,\n" +
+            "\t\t \"z\":14\n" +
+            "      },\n" +
+            "      \"open\":{  \n" +
+            "         \"monday\":[6, 22],\n" +
+            "         \"tuesday\":[6, 22],\n" +
+            "         \"wednesday\":[6, 22],\n" +
+            "         \"thursday\":[6, 22],\n" +
+            "         \"friday\":[6, 22],\n" +
+            "         \"saturday\":[8, 22],\n" +
+            "         \"sunday\":[8, 22]\n" +
+            "      },\n" +
+            "      \"sport\":[  \n" +
+            "         {  \n" +
+            "            \"fitness\":{  \n" +
+            "               \"price\":100,\n" +
+            "               \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         },\n" +
+            "         {  \n" +
+            "            \"crossfit\":{  \n" +
+            "               \"price\":100,\n" +
+            "               \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         },\n" +
+            "\t\t {  \n" +
+            "            \"fitbox\":{  \n" +
+            "               \"price\":100,\n" +
+            "                \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         },\n" +
+            "\t\t {  \n" +
+            "            \"zumba\":{  \n" +
+            "               \"price\":100,\n" +
+            "                \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         },\n" +
+            "\t\t {  \n" +
+            "            \"hiit\":{  \n" +
+            "               \"price\":100,\n" +
+            "                \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         },\n" +
+            "\t\t {  \n" +
+            "            \"kickbox\":{  \n" +
+            "               \"price\":100,\n" +
+            "                \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         },\n" +
+            "         {  \n" +
+            "            \"box\":{  \n" +
+            "               \"price\":100,\n" +
+            "                \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         },\n" +
+            "         {  \n" +
+            "            \"sebeobrana\":{  \n" +
+            "               \"price\":100,\n" +
+            "                \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         },\n" +
+            "\t\t {  \n" +
+            "            \"cyklistika\":{\n" +
+            "               \"price\":100,\n" +
+            "                \"outside\":false,\n" +
+            "               \"reservation\":true\n" +
+            "            }\n" +
+            "         }\n" +
+            "      ]\n" +
+            "   }\n" +
+            "}\n";
+    }
+
+
 }

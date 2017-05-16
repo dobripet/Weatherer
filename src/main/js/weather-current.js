@@ -7,7 +7,7 @@ export default class WeatherCurrent extends React.Component{
         const {
             description,
             icon
-        } = this.props.weather.weather[0];
+        } = this.props.weather.weather;
         const {
             temp,
             pressure,
@@ -31,22 +31,22 @@ export default class WeatherCurrent extends React.Component{
         let pressureRow = null;
         let humidityRow = null;
         if( pressure && humidity){
-            pressureRow = <tr className="weather-small"><td>Tlak:</td><td>{pressure}&nbsp;hPa</td></tr>;
-            humidityRow = <tr className="weather-small"><td>Vlhkost:</td><td>{humidity}&nbsp;%</td></tr>;
+            pressureRow = <tr><td>Tlak:</td><td>{pressure}&nbsp;hPa</td></tr>;
+            humidityRow = <tr><td>Vlhkost:</td><td>{humidity}&nbsp;%</td></tr>;
         }
         let speedRow = null;
         if (speed) {
-            speedRow = <tr className="weather-small"><td>Rychlost větru:</td><td>{speed}&nbsp;km/h</td></tr>;
+            speedRow = <tr><td>Rychlost větru:</td><td>{speed}&nbsp;km/h</td></tr>;
         }
         let sunsetRow = null;
         let sunriseRow = null;
         if(sunset && sunrise){
             let sunsetDate = new Date(sunset*1000);
             let sunsetString = sunsetDate.getHours()+':'+sunsetDate.getMinutes();
-            sunsetRow = <tr className="weather-small"><td>Západ slunce:</td><td>{sunsetString}</td></tr>;
+            sunsetRow = <tr><td>Západ slunce:</td><td>{sunsetString}</td></tr>;
             let sunriseDate = new Date(sunrise*1000);
             let sunriseString = sunriseDate.getHours()+':'+sunriseDate.getMinutes();
-            sunriseRow = <tr className="weather-small"><td>Východ slunce:</td><td>{sunriseString}</td></tr>;
+            sunriseRow = <tr><td>Východ slunce:</td><td>{sunriseString}</td></tr>;
         }
 
         return (
@@ -56,7 +56,7 @@ export default class WeatherCurrent extends React.Component{
                     {tempSpan}
                     {description}
                 </div>
-                <table className="weather-detail-table">
+                <table className="weather-detail-table small-table">
                     <tbody>
                     {humidityRow}
                     {pressureRow}

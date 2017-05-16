@@ -15,15 +15,18 @@
  *******************************************************************************/ 
 package cz.zcu.kiv.si.sportbot.controller;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import cz.zcu.kiv.si.sportbot.model.ClientRequest;
 import cz.zcu.kiv.si.sportbot.model.ClientResponse;
 import cz.zcu.kiv.si.sportbot.service.ChatBotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -33,9 +36,25 @@ public class BotController {
     @Autowired
     ChatBotService chatBotService;
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public ClientResponse communicate(@RequestBody Map<String,Object> context,@RequestBody String userInput) {
-        return chatBotService.sendMessage(context, userInput);
+    public ClientResponse communicate(@RequestBody String body){
+        try {
+            ClientRequest request = objectMapper.readValue(body, ClientRequest.class);
+            System.out.println("cajk");
+            return chatBotService.sendMessage(request.getContext(), request.getUserInput());
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ClientResponse response = new ClientResponse();
+        response.setError(true);
+        return response;
     }
 }

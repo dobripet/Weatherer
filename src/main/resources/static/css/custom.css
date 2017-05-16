@@ -18,7 +18,7 @@
     border-radius: 15px;
     background: #CFCFCF;
     padding: 15px;
-    max-width: 400px;
+    max-width: 1000px;
     left: 0;
     font-size: 18px;
     margin: 5px 0px 5px 0px;
@@ -47,10 +47,11 @@
     -webkit-flex-direction: column;
     flex-direction: column;
 }
-.weather-small{
+.small-table{
     font-size: 13px;
+    margin-left: 10px;
 }
-.weather-small > td{
+.small-table td{
     padding: 2px 5px 2px 5px;
 }
 .temperature{
@@ -61,4 +62,26 @@
 }
 .weather-detail-table{
     margin-left: 20px;
+}
+.place-name{
+    font-size: 22px;
+    font-weight: bold;
+}
+.place-container{
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.place-info{
+    width: 550px;
+}
+.start-over{
+    position: fixed;
+    z-index: 9999;
+    left: 50px;
+    top: 20px;
 }

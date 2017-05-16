@@ -5,7 +5,7 @@ import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportType;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.OpeningTime;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.Sport;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.SportPlace;
-import sun.plugin.javascript.navig.Array;
+import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
@@ -16,6 +16,7 @@ import java.util.List;
  * @author Marek Rasocha
  *         date 15.05.2017.
  */
+@Service
 public class DataSorterImpl implements DataSorter {
 
 

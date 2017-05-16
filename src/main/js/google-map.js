@@ -21,14 +21,15 @@ class GoogleMap extends React.Component {
                 name={this.props.name}
                 position={this.props.marker} />;
         }
-        return(
+        return(<div className="map">
                 <Map google={this.props.google}
-                     containerStyle={{width: '250px', height: '250px', position: 'relative'}}
+                     containerStyle={{width: '200px', height: '200px', position: 'relative', marginLeft:"10px"}}
                      zoom={this.props.zoom}
                      initialCenter={this.props.marker}
                      onReady={this.onReady} >
                     {marker}
                 </Map>
+            </div>
         )
     }
 }

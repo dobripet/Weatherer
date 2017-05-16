@@ -1,42 +1,68 @@
 import React from 'react'
-import GoogleMap from './google-map'
 import WeatherCurrent from "./weather-current"
 import WeatherForecast from "./weather-forecast"
+import Place from "./place"
 export default class ChatMessage extends React.Component{
     constructor(props) {
         super(props)
+        this.renderDay = this.renderDay.bind(this);
     }
-    render() {
+
+    renderDay(key, data, multipleDays){
         const {
-            bot,
-            message,
-            m,
+            places,
             weather,
-            weatherType
-        } = this.props.message;
-        let className = 'message-user';
-        let classNameContainer = 'message-container-user';
-        if(bot){
-            className = 'message-bot';
-            classNameContainer = 'message-container-bot';
-        }
-        let map = null;
-        if(m){
-            let center = {lat: -25.363, lng: 131.044};
-            //map = <GoogleMap marker={center} zoom={14} name="asd"/>;
+            current,
+            day
+        } = data;
+        let placesComponents = null;
+        if(places && Array.isArray(places)){
+            placesComponents = places.map((place,i) => <Place key={i} place={place}/> );
         }
         let weatherComponent = null;
-        if(weatherType === 'current'){
-            weatherComponent = <WeatherCurrent  weather={weather}/>
-        }else if(weatherType === 'forecast'){
-            weatherComponent = <WeatherForecast  weather={weather}/>
+        if(weather) {
+            if (current) {
+                weatherComponent = <WeatherForecast weather={weather}/>
+            } else {
+                weatherComponent = <WeatherCurrent weather={weather}/>
+            }
+        }
+        let dayName = null;
+        if(multipleDays){
+            if(day === 'saturday'){
+                dayName="Aktivity pro sobotu:"
+            } else if(day === 'sunday'){
+                dayName="Aktivity pro neděli:"
+            }
+            if(dayName){
+                dayName = <div className="alert alert-success">{dayName}</div>
+            }
+        }
+        return (
+            <div key={key}>
+                {dayName}
+                {weatherComponent}
+                {placesComponents}
+            </div>
+        )
+    }
+    render() {
+        const data = this.props.message.data;
+        let dataComponents = [];
+        if(data && Array.isArray(data)){
+            dataComponents = data.map((d, i) => this.renderDay(i, d, data.length > 1))
+        }
+        let className = 'message-user';
+        let classNameContainer = 'message-container-user';
+        if(this.props.message.bot){
+            className = 'message-bot';
+            classNameContainer = 'message-container-bot';
         }
         return (
             <div className={classNameContainer}>
                 <div className={className}>
-                    {message}
-                    {map}
-                    {weatherComponent}
+                    {this.props.message.text}
+                    {dataComponents}
                 </div>
             </div>
         )
