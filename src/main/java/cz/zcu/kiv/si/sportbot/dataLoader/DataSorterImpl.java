@@ -22,7 +22,7 @@ public class DataSorterImpl implements DataSorter {
     public DataSorterImpl() {
     }
 
-    public List<SportPlace> sortByPriority(@NotNull List<SportPlace> places, List<SportType> sportTypes, @NotNull List<Day> days, OpeningTime openingTime){
+    public List<SportPlace> sortByPriority(@NotNull List<SportPlace> places, @NotNull List<SportType> sportTypes, @NotNull List<Day> days, OpeningTime openingTime){
         for (SportPlace pl : places){
             pl.setPriority(getPriority(pl,sportTypes, days,openingTime));
         }

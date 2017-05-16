@@ -68,29 +68,35 @@ public class ChatBotServiceImpl implements ChatBotService{
         ObjectMapper mapper = new ObjectMapper();
         Context context = mapper.convertValue(response.getContext(), Context.class);
         ClientResponse clientResponse = new ClientResponse();
-        if(context.isAction()){
+        Map<String,Object> responseContext = response.getContext();
+        try {
             List<String> sports = context.getSports();
             List<String> sportsGroup = context.getSportgroups();
             String day = context.getDay();
             String daySpec = context.getDaySpec();
+            daySpec = daySpec == null ? "" : daySpec;
             Integer time = context.getTime();
-            try {
-               clientResponse.setData(find(sports, sportsGroup, day, daySpec, time));
-            } catch (TimePassedException e) {
-                clientResponse.setError(true);
+            if (context.getFindWeather() != null && context.getFindWeather().booleanValue()) {
+                int timeInt = time == null ? 12 : time;
+                List<Day> days = getListDay(Day.valueOf(daySpec));
+                Day d = days.get(0);
+                Week week = Week.valueOf(daySpec);
+                SportGroupForecast sportGroup = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
+                responseContext.put("outside", sportGroup.getSportGroup() == SportGroup.OUTSIDE);
             }
+            if (context.isAction()) {
+                clientResponse.setData(find(sports, sportsGroup, day, daySpec, time));
+            }
+        }catch (TimePassedException e) {
+            clientResponse.setError(true);
         }
-        Map<String,Object> responseContext = response.getContext();
-        response.getContext();
         clientResponse.setContext(responseContext);
         clientResponse.setText(response.getOutput().get("text").toString());
         return clientResponse;
     }
-/**/
     private List<Data> find(List<String> sportsList, List<String> sportsGroupList, String dayString, String daySpecString, Integer timeInteger) throws TimePassedException {
         List<Data> datas = new ArrayList<>();
         List<SportType> sports = getSportType(sportsList);
-        dayString = dayString==null ? "" : dayString;
         List<SportGroup> sportGroup = getSportGroup(sportsGroupList);
         List<Day> days = getListDay(Day.valueOf(dayString));
         Week week = Week.valueOf(daySpecString);
@@ -113,16 +119,30 @@ public class ChatBotServiceImpl implements ChatBotService{
             data.setCurrent(sgp.isCurrent());
             data.setDay(d);
             List<SportGroup> search = !sportGroup.isEmpty() ? sportGroup : Arrays.asList(sgp.getSportGroup());
-            data.setPlaces(getSportPlacesByGroup(search,d,openingTime));
+            data.setPlaces(getSportPlacesByGroup(sports,search,d,openingTime));
             datas.add(data);
         }
         return datas;
 
     }
 
-    private List<SportPlace> getSportPlacesByGroup(List<SportGroup> searchGroup, Day day, OpeningTime time){
-        List<SportType> sportTypes = new ArrayList<>(getSportTypes(searchGroup));
-        List<SportPlace> sportPlaces = dataFinder.findSport(sportTypes);
+    private List<SportPlace> getSportPlacesByGroup(List<SportType> sports,List<SportGroup> searchGroup, Day day, OpeningTime time){
+        List<SportPlace> sportPlaces = new ArrayList<>();
+        List<SportType> sportTypes = new ArrayList<>();
+        if(sports.isEmpty()){
+            for ( SportGroup group : searchGroup){
+                if(group==SportGroup.OUTSIDE){
+                    sportPlaces.addAll(dataFinder.findOutsideSport());
+                }
+                if(group==SportGroup.INSIDE){
+                    sportPlaces.addAll(dataFinder.findInsideSport());
+                }
+            }
+            sportPlaces = dataFinder.findSportInGroup(searchGroup);
+        }else{
+            sportTypes = sports;
+            sportPlaces = dataFinder.findSport(sports);
+        }
         sportPlaces = dataSorter.sortByPriority(sportPlaces,sportTypes,Arrays.asList(day),time);
         return sportPlaces;
     }
