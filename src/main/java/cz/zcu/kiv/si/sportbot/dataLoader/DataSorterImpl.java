@@ -31,12 +31,8 @@ public class DataSorterImpl implements DataSorter {
     }
 
     private List<SportPlace> sorter(List<SportPlace> places){
-        places.sort(new Comparator<SportPlace>() {
-            @Override
-            public int compare(SportPlace o1, SportPlace o2) {
-                return o2.getPriority().compareTo(o1.getPriority());
-            }
-        });
+        Comparator<SportPlace> comparator = new IBMComparator();
+        places.sort(comparator);
         return places;
     }
     private double getPriority(SportPlace sportPlace,List<SportType> sportTypes, List<Day> days, OpeningTime openingTime){

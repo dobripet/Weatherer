@@ -2,7 +2,6 @@ package cz.zcu.kiv.si.sportbot.utils;
 
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Week;
-import sun.util.resources.cldr.rm.CalendarData_rm_CH;
 
 import java.util.Calendar;
 import java.util.HashMap;
