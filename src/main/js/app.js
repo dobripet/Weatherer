@@ -41,7 +41,7 @@ class App extends React.Component{
                 },
                 body: JSON.stringify({
                     context: null,
-                    userInput: "a",
+                    userInput: "",
                 })
             }
         ).then(response =>
@@ -62,7 +62,7 @@ class App extends React.Component{
     }
     handleUserAnswer(answer){
         let lastMsg = this.state.messages[this.state.messages.length -1];
-        fetch(API+'/bot', {
+        fetch(API+'bot', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
