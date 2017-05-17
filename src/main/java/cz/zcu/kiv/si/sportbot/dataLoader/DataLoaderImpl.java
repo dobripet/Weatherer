@@ -96,12 +96,12 @@ public class DataLoaderImpl implements DataLoader {
                 for(Map.Entry<String,Object> entryDay : ( (Map<String, Object>) entry.getValue()).entrySet()){
                     openingTime.put(getDay(entryDay.getKey()),getOpeningDay((List) entryDay.getValue()));
                 }
-                sportPlace.setOpeningTime(openingTime);
+                sportPlace.setOpen(openingTime);
             }
             if (entry.getKey().equalsIgnoreCase("sport")){
                 List<Sport> sportList = new ArrayList<>();
                 for(Object sports : ( (List) entry.getValue())){
-                    sportList.add(parseSport((Map<String, Object>)sports,sportPlace.getOpeningTime()));
+                    sportList.add(parseSport((Map<String, Object>)sports,sportPlace.getOpen()));
                 }
                 sportPlace.setSports(sportList);
             }

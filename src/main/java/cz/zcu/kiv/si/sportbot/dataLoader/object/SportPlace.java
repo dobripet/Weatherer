@@ -20,7 +20,7 @@ public class SportPlace{
 
     private Double priority;
 
-    private Map<Day,OpeningTime> openingTime;
+    private Map<Day,OpeningTime> open;
     private List<Sport> sports;
 
     public SportPlace() {
@@ -44,12 +44,12 @@ public class SportPlace{
     }
 
 
-    public Map<Day, OpeningTime> getOpeningTime() {
-        return openingTime;
+    public Map<Day, OpeningTime> getOpen() {
+        return open;
     }
 
-    public void setOpeningTime(Map<Day, OpeningTime> openingTime) {
-        this.openingTime = openingTime;
+    public void setOpen(Map<Day, OpeningTime> openingTime) {
+        this.open = openingTime;
     }
 
     public List<Sport> getSports() {
@@ -92,7 +92,7 @@ public class SportPlace{
                 ", lat=" + lat +
                 ", z=" + z +
                 ", contact=" + contact +
-                ", openingTime=" + openingTime +
+                ", openingTime=" + open +
                 ", sports=" + sports +
                 '}';
     }

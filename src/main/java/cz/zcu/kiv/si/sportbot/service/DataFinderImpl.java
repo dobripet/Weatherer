@@ -194,7 +194,7 @@ public class DataFinderImpl implements DataFinder {
         newPlace.setLat(sportPlace.getLat());
         newPlace.setLon(sportPlace.getLon());
         newPlace.setZ(sportPlace.getZ());
-        newPlace.setOpeningTime(sportPlace.getOpeningTime());
+        newPlace.setOpen(sportPlace.getOpen());
         return sportPlace;
     }
 }
