@@ -4,6 +4,7 @@ import cz.zcu.kiv.si.sportbot.dataLoader.DataLoader;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportGroup;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportType;
+import cz.zcu.kiv.si.sportbot.dataLoader.object.Contact;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.OpeningTime;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.Sport;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.SportPlace;
@@ -183,11 +184,13 @@ public class DataFinderImpl implements DataFinder {
 
     private SportPlace getNewSportPlace(SportPlace sportPlace) {
         SportPlace newPlace = new SportPlace();
-        newPlace.setName(sportPlace.getName());
-        newPlace.setAddress(sportPlace.getAddress());
-        newPlace.setPhone(sportPlace.getPhone());
-        newPlace.setEmail(sportPlace.getEmail());
-        newPlace.setUrl(sportPlace.getUrl());
+        Contact contact = new Contact();
+        Contact oldContact = sportPlace.getContact();
+        contact.setName(oldContact.getName());
+        contact.setAddress(oldContact.getAddress());
+        contact.setPhone(oldContact.getPhone());
+        contact.setEmail(oldContact.getEmail());
+        contact.setUrl(oldContact.getUrl());
         newPlace.setLat(sportPlace.getLat());
         newPlace.setLon(sportPlace.getLon());
         newPlace.setZ(sportPlace.getZ());

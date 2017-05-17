@@ -13,11 +13,7 @@ import java.util.Map;
  *         date 14.05.2017.
  */
 public class SportPlace{
-    private String name;
-    private String address;
-    private String phone;
-    private String email;
-    private String url;
+    private Contact contact;
     private double lon;
     private double lat;
     private double z;
@@ -30,21 +26,6 @@ public class SportPlace{
     public SportPlace() {
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public double getLat() {
         return lat;
@@ -62,13 +43,6 @@ public class SportPlace{
         this.lon = lon;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Map<Day, OpeningTime> getOpeningTime() {
         return openingTime;
@@ -78,28 +52,12 @@ public class SportPlace{
         this.openingTime = openingTime;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public List<Sport> getSports() {
         return sports;
     }
 
     public void setSports(List<Sport> sports) {
         this.sports = sports;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public double getZ() {
@@ -118,18 +76,22 @@ public class SportPlace{
         this.priority = priority;
     }
 
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
     @Override
     public String toString() {
         return "SportPlace{"+
                 "priority"+ priority+
-                "address='" + address + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", url='" + url + '\'' +
                 ", lon=" + lon +
                 ", lat=" + lat +
                 ", z=" + z +
+                ", contact=" + contact +
                 ", openingTime=" + openingTime +
                 ", sports=" + sports +
                 '}';

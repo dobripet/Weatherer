@@ -3,6 +3,7 @@ package cz.zcu.kiv.si.sportbot.dataLoader;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportGroup;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportType;
+import cz.zcu.kiv.si.sportbot.dataLoader.object.Contact;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.OpeningTime;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.Sport;
 import cz.zcu.kiv.si.sportbot.dataLoader.object.SportPlace;
@@ -77,16 +78,18 @@ public class DataLoaderImpl implements DataLoader {
         SportPlace sportPlace = new SportPlace();
         for(Map.Entry<String,Object> entry : map.entrySet()){
             if (entry.getKey().equalsIgnoreCase("contact")){
+                Contact contact = new Contact();
                 for(Map.Entry<String,Object> basicEntry : ((Map<String, Object>) entry.getValue()).entrySet()){
-                    if (basicEntry.getKey().equalsIgnoreCase("name")) sportPlace.setName(basicEntry.getValue().toString());
-                    if (basicEntry.getKey().equalsIgnoreCase("address")) sportPlace.setAddress(basicEntry.getValue().toString());
-                    if (basicEntry.getKey().equalsIgnoreCase("phone")) sportPlace.setPhone(basicEntry.getValue().toString());
-                    if (basicEntry.getKey().equalsIgnoreCase("email")) sportPlace.setEmail(basicEntry.getValue().toString());
-                    if (basicEntry.getKey().equalsIgnoreCase("url")) sportPlace.setUrl(basicEntry.getValue().toString());
+                    if (basicEntry.getKey().equalsIgnoreCase("name")) contact.setName(basicEntry.getValue().toString());
+                    if (basicEntry.getKey().equalsIgnoreCase("address")) contact.setAddress(basicEntry.getValue().toString());
+                    if (basicEntry.getKey().equalsIgnoreCase("phone")) contact.setPhone(basicEntry.getValue().toString());
+                    if (basicEntry.getKey().equalsIgnoreCase("email")) contact.setEmail(basicEntry.getValue().toString());
+                    if (basicEntry.getKey().equalsIgnoreCase("url")) contact.setUrl(basicEntry.getValue().toString());
                     if (basicEntry.getKey().equalsIgnoreCase("lon")) sportPlace.setLon(((Number)basicEntry.getValue()).doubleValue());
                     if (basicEntry.getKey().equalsIgnoreCase("lat")) sportPlace.setLat(((Number) basicEntry.getValue()).doubleValue());
                     if (basicEntry.getKey().equalsIgnoreCase("z")) sportPlace.setZ(((Number) basicEntry.getValue()).doubleValue());
                 }
+                sportPlace.setContact(contact);
             }
             if (entry.getKey().equalsIgnoreCase("open")){
                 Map<Day,OpeningTime> openingTime = new HashMap<>();
