@@ -65,12 +65,14 @@ public class ChatBotServiceImpl implements ChatBotService{
                 .message(workspaceId, newMessage)
                 .execute();
         //action
-        System.out.println("kontext v param: "+ previousContext );
+
         ObjectMapper mapper = new ObjectMapper();
         Context context = mapper.convertValue(response.getContext(), Context.class);
         System.out.println(response.getContext());
         ClientResponse clientResponse = new ClientResponse();
         Map<String,Object> responseContext = response.getContext();
+        System.out.println("kontext v param: "+ previousContext );
+        System.out.println("Context co jsem dostal -> "+ responseContext);
         try {
             List<String> sports = context.getSports();
             List<String> sportsGroup = context.getSportgroups();
@@ -78,11 +80,14 @@ public class ChatBotServiceImpl implements ChatBotService{
             String daySpec = context.getDaySpec();
             daySpec = daySpec == null ? "" : daySpec;
             Integer time = context.getTime();
+            List<Day> days = getListDay(Utils.lookupDay(day));
+            Week week = Utils.lookupWeek(daySpec);
+            System.out.println("hledej: day="+ day+", daySpec=" + daySpec);
+            System.out.println("days:"+days);
+            System.out.println("week:"+week);
             if (context.getFindWeather() != null && context.getFindWeather().booleanValue()) {
                 int timeInt = time == null ? 12 : time;
-                List<Day> days = getListDay(Utils.lookup(Day.class, day));
                 Day d = days.get(0);
-                Week week = Utils.lookup(Week.class, daySpec);
                 SportGroupForecast sportGroup = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
                 Data data = new Data();
                 data.setaWeather(sportGroup.getWeather());
@@ -92,24 +97,22 @@ public class ChatBotServiceImpl implements ChatBotService{
                 System.out.println("pocasi vyhledano: "+ d + ";"+ week);
             }
             if (context.isAction()) {
-                clientResponse.setData(find(sports, sportsGroup, day, daySpec, time));
+                clientResponse.setData(find(sports, sportsGroup, days, week, time));
                 System.out.println("vyhledano");
             }
         }catch (TimePassedException e) {
             clientResponse.setError(true);
         }
-        System.out.println("Context co jsem dostal -> "+ responseContext);
         clientResponse.setContext(responseContext);
-        clientResponse.setText(response.getOutput().get("text").toString());
+        clientResponse.setText((List<String>) response.getOutput().get("text"));
+//        clientResponse.setText(response.getOutput().get("text").toString());
         System.out.println("vysledek vracen");
         return clientResponse;
     }
-    private List<Data> find(List<String> sportsList, List<String> sportsGroupList, String dayString, String daySpecString, Integer timeInteger) throws TimePassedException {
+    private List<Data> find(List<String> sportsList, List<String> sportsGroupList, List<Day> days, Week week, Integer timeInteger) throws TimePassedException {
         List<Data> datas = new ArrayList<>();
         List<SportType> sports = getSportType(sportsList);
         List<SportGroup> sportGroup = getSportGroup(sportsGroupList);
-        List<Day> days = getListDay(Utils.lookup(Day.class, dayString));
-        Week week = Utils.lookup(Week.class,daySpecString);
         OpeningTime openingTime = new OpeningTime();
         int timeInt;
         if (timeInteger==null){
@@ -160,7 +163,7 @@ public class ChatBotServiceImpl implements ChatBotService{
         List<SportType> sports = new ArrayList<>();
         if (sportsList!=null) {
             for (String str : sportsList) {
-                sports.add(Utils.lookup(SportType.class, str));
+                sports.add(Utils.lookupSporType(str));
             }
         }
         return sports;
@@ -191,7 +194,6 @@ public class ChatBotServiceImpl implements ChatBotService{
             } else {
                 list.add(Utils.getWeekDay(day));
             }
-            return list;
         }else{
             list = Arrays.asList(Day.values());
         }

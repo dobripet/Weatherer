@@ -11,7 +11,7 @@ import java.util.Map;
  *         date 16.05.2017.
  */
 public class ClientResponse {
-    private String text;
+    private List<String> text;
     private Map<String,Object> context;
     private List<Data>  data;
     private boolean error;
@@ -24,11 +24,11 @@ public class ClientResponse {
 
 
 
-    public String getText() {
+    public List<String> getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(List<String> text) {
         this.text = text;
     }
 

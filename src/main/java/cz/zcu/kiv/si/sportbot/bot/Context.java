@@ -38,6 +38,8 @@ public class Context {
     private Boolean findWhen;
     @JsonProperty("find_price")
     private Boolean findPrice;
+    @JsonProperty("action")
+    private boolean action;
 
     public boolean isAction() {
         return action;
@@ -143,11 +145,4 @@ public class Context {
     public void setFindWhere(Boolean findWhere) {
         this.findWhere = findWhere;
     }
-
-    @JsonProperty("action")
-    private boolean action
-
-            ;
-
-
 }

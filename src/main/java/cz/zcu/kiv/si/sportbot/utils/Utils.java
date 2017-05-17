@@ -1,6 +1,7 @@
 package cz.zcu.kiv.si.sportbot.utils;
 
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Day;
+import cz.zcu.kiv.si.sportbot.dataLoader.enums.SportType;
 import cz.zcu.kiv.si.sportbot.dataLoader.enums.Week;
 
 import java.util.Calendar;
@@ -71,12 +72,26 @@ public class Utils {
         intToDay.put(6, Day.FRIDAY);
         intToDay.put(7, Day.SATURDAY);
     }
-    public static <E extends Enum<E>> E lookup(Class<E> e, String id) {
-        E result = null;
-        try {
-            if (id!=null)
-                result = Enum.valueOf(e, id);
-        } catch (IllegalArgumentException ex) {}
-        return result;
+    public static Day lookupDay(String id) {
+        Day[] days = Day.values();
+        for(int i =0; i< days.length;i++){
+            if (days[i].getName().equalsIgnoreCase(id)) return days[i];
+        }
+        return null;
     }
+    public static Week lookupWeek(String id) {
+        Week[] days = Week.values();
+        for(int i =0; i< days.length;i++){
+            if (days[i].getName().equalsIgnoreCase(id)) return days[i];
+        }
+        return null;
+    }
+    public static SportType lookupSporType(String id) {
+        SportType[] days = SportType.values();
+        for(int i =0; i< days.length;i++){
+            if (days[i].getName().equalsIgnoreCase(id)) return days[i];
+        }
+        return null;
+    }
+
 }
