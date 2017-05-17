@@ -82,9 +82,9 @@ public class ChatBotServiceImpl implements ChatBotService{
             Integer time = context.getTime();
             if (context.getFindWeather() != null && context.getFindWeather().booleanValue()) {
                 int timeInt = time == null ? 12 : time;
-                List<Day> days = getListDay(Day.valueOf(daySpec));
+                List<Day> days = getListDay(Utils.lookup(Day.class, day));
                 Day d = days.get(0);
-                Week week = Week.valueOf(daySpec);
+                Week week = Utils.lookup(Week.class, daySpec);
                 SportGroupForecast sportGroup = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
                 Data data = new Data();
                 data.setaWeather(sportGroup.getWeather());
@@ -109,8 +109,8 @@ public class ChatBotServiceImpl implements ChatBotService{
         List<Data> datas = new ArrayList<>();
         List<SportType> sports = getSportType(sportsList);
         List<SportGroup> sportGroup = getSportGroup(sportsGroupList);
-        List<Day> days = getListDay(Day.valueOf(dayString));
-        Week week = Week.valueOf(daySpecString);
+        List<Day> days = getListDay(Utils.lookup(Day.class, dayString));
+        Week week = Utils.lookup(Week.class,daySpecString);
         OpeningTime openingTime = new OpeningTime();
         int timeInt;
         if (timeInteger==null){
@@ -161,7 +161,7 @@ public class ChatBotServiceImpl implements ChatBotService{
         List<SportType> sports = new ArrayList<>();
         if (sportsList!=null) {
             for (String str : sportsList) {
-                sports.add(SportType.valueOf(str));
+                sports.add(Utils.lookup(SportType.class, str));
             }
         }
         return sports;

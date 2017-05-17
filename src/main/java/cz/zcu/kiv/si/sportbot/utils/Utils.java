@@ -71,5 +71,12 @@ public class Utils {
         intToDay.put(6, Day.FRIDAY);
         intToDay.put(7, Day.SATURDAY);
     }
-
+    public static <E extends Enum<E>> E lookup(Class<E> e, String id) {
+        E result = null;
+        try {
+            if (id!=null)
+                result = Enum.valueOf(e, id);
+        } catch (IllegalArgumentException ex) {}
+        return result;
+    }
 }
