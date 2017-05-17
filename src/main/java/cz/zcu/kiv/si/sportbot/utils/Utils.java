@@ -35,20 +35,19 @@ public class Utils {
 
     public static Day getWeekDay(Day day){
         Calendar calendar = Calendar.getInstance();
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
         switch(day){
             case TODAY: break;
             case TOMORROW: {
-                dayOfWeek += 1;
+                calendar.add(Calendar.DATE, 1);
             } break;
             case DATOMORROW: {
-                dayOfWeek += 2;
+                calendar.add(Calendar.DATE, 2);
             } break;
             default: {
                 return day;
             }
         }
-        return intToDay.get(dayOfWeek);
+        return intToDay.get(calendar.get(Calendar.DAY_OF_WEEK));
     }
 
     public static Map<Day, Integer> dayToInt;

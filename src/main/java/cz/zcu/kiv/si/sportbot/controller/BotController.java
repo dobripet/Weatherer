@@ -44,7 +44,7 @@ public class BotController {
     public ClientResponse communicate(@RequestBody String body){
         try {
             ClientRequest request = objectMapper.readValue(body, ClientRequest.class);
-            System.out.println("cajk");
+            System.out.println(body);
             return chatBotService.sendMessage(request.getContext(), request.getUserInput());
         } catch (JsonParseException e) {
             e.printStackTrace();

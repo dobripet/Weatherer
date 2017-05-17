@@ -18,8 +18,8 @@ class NotFound extends React.Component{
         </div>;
     }
 }*/
-//const API = 'http://localhost:9080/sportbot/';
-const API = '/';
+const API = 'http://localhost:9080/sportbot/';
+//const API = '/';
 class App extends React.Component{
     constructor(props) {
         super(props);

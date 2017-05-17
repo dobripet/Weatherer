@@ -72,7 +72,7 @@ public class WeatherServiceOpenWeatherApi implements WeatherService {
 
     @Override
     public SportGroupForecast getSportGroupAndForecastForDate(int hour, Day day, Week week) throws TimePassedException{
-        long time = Utils.getUnixTimeFromDate(hour, day, week);
+        long time = Utils.getUnixTimeFromDate(hour, Utils.getWeekDay(day), week);
         SportGroupForecast sportGroupForecast = null;
         //browse accurate forecast
         if(getWeatherForecast() != null) {
