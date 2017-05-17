@@ -17,6 +17,7 @@ import cz.zcu.kiv.si.sportbot.model.Data;
 import cz.zcu.kiv.si.sportbot.model.SportGroupForecast;
 import cz.zcu.kiv.si.sportbot.utils.TimePassedException;
 import cz.zcu.kiv.si.sportbot.utils.Utils;
+import groovy.util.logging.Log;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ import java.util.*;
  */
 @Service
 public class ChatBotServiceImpl implements ChatBotService{
-    private static final Logger logger = LogManager.getLogger(ChatBotServiceImpl.class.getName());
+    private static Logger logger = Logger.getLogger(ChatBotServiceImpl.class);
     private String url = "https://gateway.watsonplatform.net/conversation/api";
     private ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2017_02_03,
             "40fc984f-8da4-4bbc-9edb-18df99a346aa", "ny686uBZUy7d");
@@ -45,6 +46,9 @@ public class ChatBotServiceImpl implements ChatBotService{
     }
 
     public ClientResponse sendMessage(Map<String,Object> previousContext,String text) {
+        System.out.println(("message odeslana"));
+        System.out.println(previousContext);
+        System.out.println(text);
         ConversationService service = new ConversationService("2017-04-21");
         service.setUsernameAndPassword("40fc984f-8da4-4bbc-9edb-18df99a346aa", "ny686uBZUy7d");
         service.setEndPoint(url);
@@ -65,6 +69,7 @@ public class ChatBotServiceImpl implements ChatBotService{
                 .message(workspaceId, newMessage)
                 .execute();
         //action
+        System.out.println("message prijata");
         ObjectMapper mapper = new ObjectMapper();
         Context context = mapper.convertValue(response.getContext(), Context.class);
         ClientResponse clientResponse = new ClientResponse();
@@ -86,12 +91,14 @@ public class ChatBotServiceImpl implements ChatBotService{
             }
             if (context.isAction()) {
                 clientResponse.setData(find(sports, sportsGroup, day, daySpec, time));
+                System.out.println("vyhledano");
             }
         }catch (TimePassedException e) {
             clientResponse.setError(true);
         }
         clientResponse.setContext(responseContext);
         clientResponse.setText(response.getOutput().get("text").toString());
+        System.out.println("vysledek vracen");
         return clientResponse;
     }
     private List<Data> find(List<String> sportsList, List<String> sportsGroupList, String dayString, String daySpecString, Integer timeInteger) throws TimePassedException {

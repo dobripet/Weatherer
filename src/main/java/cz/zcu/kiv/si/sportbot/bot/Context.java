@@ -1,5 +1,6 @@
 package cz.zcu.kiv.si.sportbot.bot;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Map;
  * @author Marek Rasocha
  *         date 15.05.2017.
  */
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Context {
     @JsonProperty("conversation_id")
     private String conversationId;
