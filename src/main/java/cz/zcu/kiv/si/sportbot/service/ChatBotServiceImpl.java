@@ -61,15 +61,13 @@ public class ChatBotServiceImpl implements ChatBotService{
                     .build();
         }
         String workspaceId = "91e6b689-f119-47b1-be6e-48906213eda1";
-
         MessageResponse response = service
                 .message(workspaceId, newMessage)
                 .execute();
         //action
-        System.out.println("message prijata");
+        System.out.println("kontext v param: "+ previousContext );
         ObjectMapper mapper = new ObjectMapper();
         Context context = mapper.convertValue(response.getContext(), Context.class);
-        System.out.println("Context");
         System.out.println(response.getContext());
         ClientResponse clientResponse = new ClientResponse();
         Map<String,Object> responseContext = response.getContext();
@@ -91,7 +89,7 @@ public class ChatBotServiceImpl implements ChatBotService{
                 data.setCurrent(sportGroup.isCurrent());
                 clientResponse.setData(Arrays.asList(data));
                 responseContext.put("outside", sportGroup.getSportGroup() == SportGroup.OUTSIDE);
-                System.out.println("pocasi vyhledano");
+                System.out.println("pocasi vyhledano: "+ d + ";"+ week);
             }
             if (context.isAction()) {
                 clientResponse.setData(find(sports, sportsGroup, day, daySpec, time));
@@ -100,6 +98,7 @@ public class ChatBotServiceImpl implements ChatBotService{
         }catch (TimePassedException e) {
             clientResponse.setError(true);
         }
+        System.out.println("Context co jsem dostal -> "+ responseContext);
         clientResponse.setContext(responseContext);
         clientResponse.setText(response.getOutput().get("text").toString());
         System.out.println("vysledek vracen");
