@@ -46,9 +46,6 @@ public class ChatBotServiceImpl implements ChatBotService{
     }
 
     public ClientResponse sendMessage(Map<String,Object> previousContext,String text) {
-        System.out.println(("message odeslana"));
-        System.out.println(previousContext);
-        System.out.println(text);
         ConversationService service = new ConversationService("2017-04-21");
         service.setUsernameAndPassword("40fc984f-8da4-4bbc-9edb-18df99a346aa", "ny686uBZUy7d");
         service.setEndPoint(url);
@@ -72,6 +69,8 @@ public class ChatBotServiceImpl implements ChatBotService{
         System.out.println("message prijata");
         ObjectMapper mapper = new ObjectMapper();
         Context context = mapper.convertValue(response.getContext(), Context.class);
+        System.out.println("Context");
+        System.out.println(response.getContext());
         ClientResponse clientResponse = new ClientResponse();
         Map<String,Object> responseContext = response.getContext();
         try {
@@ -87,7 +86,12 @@ public class ChatBotServiceImpl implements ChatBotService{
                 Day d = days.get(0);
                 Week week = Week.valueOf(daySpec);
                 SportGroupForecast sportGroup = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
+                Data data = new Data();
+                data.setaWeather(sportGroup.getWeather());
+                data.setCurrent(sportGroup.isCurrent());
+                clientResponse.setData(Arrays.asList(data));
                 responseContext.put("outside", sportGroup.getSportGroup() == SportGroup.OUTSIDE);
+                System.out.println("pocasi vyhledano");
             }
             if (context.isAction()) {
                 clientResponse.setData(find(sports, sportsGroup, day, daySpec, time));
