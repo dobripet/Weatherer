@@ -85,3 +85,6 @@
     left: 50px;
     top: 20px;
 }
+.contact-table td:nth-child(2){
+    padding-left: 15px;
+}

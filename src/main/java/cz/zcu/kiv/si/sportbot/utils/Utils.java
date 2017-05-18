@@ -16,13 +16,15 @@ public class Utils {
     public static long getUnixTimeFromDate(int hour, Day day, Week week) throws TimePassedException{
         Calendar calendar = Calendar.getInstance();
         int diffDay = dayToInt.get(day) - calendar.get(Calendar.DAY_OF_WEEK);
-        if(week == Week.THIS){
+        if(week == Week.NEXT){
+            diffDay+=7;
+
+        } else{
+            //this or null week
             //convert to next
             if( diffDay < 0){
                 diffDay+=7;
             }
-        } else{
-            diffDay+=7;
         }
         int diffHour = hour - calendar.get(Calendar.HOUR_OF_DAY);
         if(diffDay == 0 && diffHour < 0){

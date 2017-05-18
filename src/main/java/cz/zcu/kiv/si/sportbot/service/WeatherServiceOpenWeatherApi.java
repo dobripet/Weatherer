@@ -25,6 +25,7 @@ public class WeatherServiceOpenWeatherApi implements WeatherService {
     private static final String APP_ID = "APPID=" + API_KEY;
     private static final String UNITS = "units=metric";
     private static final String CITY_ID = "id=3068160";
+    private static final String LANG = "lang=cz";
 
     private static final String CURRENT = "weather";
     private static final String FORECAST = "forecast";
@@ -133,7 +134,7 @@ public class WeatherServiceOpenWeatherApi implements WeatherService {
 
     private String makeUri(String uri, String parameters) {
         String param = StringUtils.isEmpty(parameters) ? "" : parameters + "&";
-        return BASE_URI + uri + "?" + param + CITY_ID + "&" + UNITS + "&" + APP_ID;
+        return BASE_URI + uri + "?" + param + CITY_ID + "&" + UNITS + "&" + LANG +"&" + APP_ID;
     }
 
 

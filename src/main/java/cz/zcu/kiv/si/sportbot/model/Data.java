@@ -12,15 +12,15 @@ import java.util.List;
 public class Data {
     private List<SportPlace> places;
     private Day day;
-    private AWeather aWeather;
+    private AWeather weather;
     private boolean current;
 
-    public AWeather getaWeather() {
-        return aWeather;
+    public AWeather getWeather() {
+        return weather;
     }
 
-    public void setaWeather(AWeather aWeather) {
-        this.aWeather = aWeather;
+    public void setWeather(AWeather weather) {
+        this.weather = weather;
     }
 
     public boolean isCurrent() {

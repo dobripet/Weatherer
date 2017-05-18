@@ -8,30 +8,35 @@ export default class Place extends React.Component{
         const {
             contact,
             open,
-            sport,
+            sports,
+            lat,
+            lon
         } = this.props.place;
         const {
             name,
             address,
             phone,
             email,
-            url,
-            lat,
-            lon,
-            z,
+            url
         } = contact;
         const {
-            monday,
-            tuesday,
-            wednesday,
-            thursday,
-            friday,
-            saturday,
-            sunday,
+            MONDAY,
+            TUESDAY,
+            WEDNESDAY,
+            THURSDAY,
+            FRIDAY,
+            SATURDAY,
+            SUNDAY,
         } = open;
-        let center = {lat, lng: lon};
+        let z = 14;
+        if(this.props.place.z){
+            z = this.props.place.z;
+        }
         let map = null;
-        map = <GoogleMap marker={center} zoom={z} name={name}/>;
+        if(lat && lon){
+            let center = {lat, lng: lon};
+            map = <GoogleMap marker={center} zoom={z} name={name}/>;
+        }
         let contactTable = null;
         if(contact && (address || phone || email || url)) {
             let addressRow;
@@ -63,13 +68,13 @@ export default class Place extends React.Component{
                     <td>{url}</td>
                 </tr>;
             }
-            if(sport && Array.isArray(sport) && sport.length > 0 && sport[0] && Object.keys(sport[0])[0].price){
+            if(sports && Array.isArray(sports) && sports.length > 0 && sports[0] && sports[0].price){
                 priceRow = <tr>
                     <td>Cena za hodinu:</td>
-                    <td>{Object.keys(sport[0])[0].price}&bsp;Kč</td>
+                    <td>{sports[0].price}&nbsp;Kč</td>
                 </tr>;
             }
-            contactTable = <table>
+            contactTable = <table className="contact-table">
                 <tbody>
                 {addressRow}
                 {phoneRow}
@@ -89,31 +94,31 @@ export default class Place extends React.Component{
                     <tbody>
                     <tr>
                         <td>Pondělí:</td>
-                        <td>{monday[0]}&nbsp;-&nbsp;{monday[1]}</td>
+                        <td>{MONDAY.from}&nbsp;-&nbsp;{MONDAY.to}</td>
                     </tr>
                     <tr>
                         <td>Úterý:</td>
-                        <td>{tuesday[0]}&nbsp;-&nbsp;{tuesday[1]}</td>
+                        <td>{TUESDAY.from}&nbsp;-&nbsp;{TUESDAY.to}</td>
                     </tr>
                     <tr>
                         <td>Středa:</td>
-                        <td>{wednesday[0]}&nbsp;-&nbsp;{wednesday[1]}</td>
+                        <td>{WEDNESDAY.from}&nbsp;-&nbsp;{WEDNESDAY.to}</td>
                     </tr>
                     <tr>
                         <td>Čtvrtek:</td>
-                        <td>{thursday[0]}&nbsp;-&nbsp;{thursday[1]}</td>
+                        <td>{THURSDAY.from}&nbsp;-&nbsp;{THURSDAY.to}</td>
                     </tr>
                     <tr>
                         <td>Pátek:</td>
-                        <td>{friday[0]}&nbsp;-&nbsp;{friday[1]}</td>
+                        <td>{FRIDAY.from}&nbsp;-&nbsp;{FRIDAY.to}</td>
                     </tr>
                     <tr>
                         <td>Sobota:</td>
-                        <td>{saturday[0]}&nbsp;-&nbsp;{saturday[1]}</td>
+                        <td>{SATURDAY.from}&nbsp;-&nbsp;{SATURDAY.to}</td>
                     </tr>
                     <tr>
                         <td>Neděle:</td>
-                        <td>{sunday[0]}&nbsp;-&nbsp;{sunday[1]}</td>
+                        <td>{SUNDAY.from}&nbsp;-&nbsp;{SUNDAY.to}</td>
                     </tr>
                     </tbody>
                 </table>;

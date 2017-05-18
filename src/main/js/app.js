@@ -56,6 +56,7 @@ class App extends React.Component{
             console.log("ERROR", error);
             this.setState({error:"Něco se pokazilo, zkuste jiný dotaz :(", disabledInput: false});
         });
+
     }
     componentDidMount(){
         this.handleReset();

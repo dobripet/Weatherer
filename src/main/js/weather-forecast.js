@@ -8,14 +8,14 @@ export default class WeatherForecast extends React.Component{
             day,
             eve,
             morn,
-        } = this.props.weather.list[0].temp;
-        const humidity = this.props.weather.list[0].humidity;
-        const pressure = this.props.weather.list[0].pressure;
-        const speed = this.props.weather.list[0].speed;
+        } = this.props.weather.temp;
+        const humidity = this.props.weather.humidity;
+        const pressure = this.props.weather.pressure;
+        const speed = this.props.weather.speed;
         const {
             description,
             icon
-        } = this.props.weather.list[0].weather[0];
+        } = this.props.weather.weather;
 
         let iconImg = null;
         if(icon) {
@@ -29,18 +29,18 @@ export default class WeatherForecast extends React.Component{
         let pressureRow = null;
         let humidityRow = null;
         if( pressure && humidity){
-            pressureRow = <tr className="weather-small"><td>Tlak:</td><td>{pressure}&nbsp;hPa</td></tr>;
-            humidityRow = <tr className="weather-small"><td>Vlhkost:</td><td>{humidity}&nbsp;%</td></tr>;
+            pressureRow = <tr><td>Tlak:</td><td>{pressure}&nbsp;hPa</td></tr>;
+            humidityRow = <tr><td>Vlhkost:</td><td>{humidity}&nbsp;%</td></tr>;
         }
         let speedRow = null;
         if (speed) {
-            speedRow = <tr className="weather-small"><td>Rychlost větru:</td><td>{speed}&nbsp;km/h</td></tr>;
+            speedRow = <tr><td>Rychlost větru:</td><td>{speed}&nbsp;km/h</td></tr>;
         }
         let eveRow = null;
         let mornRow = null;
         if(eve && morn){
-            mornRow = <tr className="weather-small"><td>Ranní teplota:</td><td>{Math.round(morn)}°C</td></tr>;
-            eveRow = <tr className="weather-small"><td>Večerní teplota</td><td>{Math.round(eve)}°C</td></tr>;
+            mornRow = <tr><td>Ranní teplota:</td><td>{Math.round(morn)}°C</td></tr>;
+            eveRow = <tr><td>Večerní teplota;</td><td>{Math.round(eve)}°C</td></tr>;
         }
 
         return (
@@ -50,7 +50,7 @@ export default class WeatherForecast extends React.Component{
                     {daySpan}
                     {description}
                 </div>
-                <table className="weather-detail-table">
+                <table className="weather-detail-table weather-small">
                     <tbody>
                     {humidityRow}
                     {pressureRow}

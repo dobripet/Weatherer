@@ -75,7 +75,7 @@ public class ChatBotServiceImpl implements ChatBotService{
                 Day d = days.get(0);
                 SportGroupForecast sportGroup = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
                 Data data = new Data();
-                data.setaWeather(sportGroup.getWeather());
+                data.setWeather(sportGroup.getWeather());
                 data.setCurrent(sportGroup.isCurrent());
                 clientResponse.setData(Arrays.asList(data));
                 responseContext.put("outside", sportGroup.getSportGroup() == SportGroup.OUTSIDE);
@@ -112,7 +112,7 @@ public class ChatBotServiceImpl implements ChatBotService{
             SportGroupForecast sgp;
             Data data = new Data();
             sgp = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
-            data.setaWeather(sgp.getWeather());
+            data.setWeather(sgp.getWeather());
             data.setCurrent(sgp.isCurrent());
             data.setDay(d);
             List<SportGroup> searchGroup = !sportGroup.isEmpty() ? sportGroup : Arrays.asList(sgp.getSportGroup());

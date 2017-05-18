@@ -22,9 +22,9 @@ export default class ChatMessage extends React.Component{
         let weatherComponent = null;
         if(weather) {
             if (current) {
-                weatherComponent = <WeatherForecast weather={weather}/>
-            } else {
                 weatherComponent = <WeatherCurrent weather={weather}/>
+            } else {
+                weatherComponent = <WeatherForecast weather={weather}/>
             }
         }
         let dayName = null;
@@ -61,7 +61,7 @@ export default class ChatMessage extends React.Component{
         return (
             <div className={classNameContainer}>
                 <div className={className}>
-                    {this.props.message.text}
+                    {Array.isArray(this.props.message.text) ? this.props.message.text.join(" ") : this.props.message.text}
                     {dataComponents}
                 </div>
             </div>

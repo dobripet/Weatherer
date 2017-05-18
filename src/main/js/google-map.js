@@ -21,19 +21,19 @@ class GoogleMap extends React.Component {
                 name={this.props.name}
                 position={this.props.marker} />;
         }
-        return(<div className="map">
+        console.log("chci vykreslit mapu ", this.props.marker, this.props.zoom)
+        return(
                 <Map google={this.props.google}
-                     containerStyle={{width: '200px', height: '200px', position: 'relative', marginLeft:"10px"}}
+                     containerStyle={{width: '200px', height: '200px', position: 'relative', margin:"3px 0px 3px 10px"}}
                      zoom={this.props.zoom}
                      initialCenter={this.props.marker}
                      onReady={this.onReady} >
                     {marker}
                 </Map>
-            </div>
         )
     }
 }
 
 export default GoogleApiWrapper({
-    apiKey:'AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo'
+    apiKey:'AIzaSyCEVA9FV3uJOPvvCEHChSpz5PkBSh6EVJo'
 })(GoogleMap)
