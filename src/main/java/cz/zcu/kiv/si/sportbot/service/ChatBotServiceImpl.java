@@ -17,9 +17,6 @@ import cz.zcu.kiv.si.sportbot.model.Data;
 import cz.zcu.kiv.si.sportbot.model.SportGroupForecast;
 import cz.zcu.kiv.si.sportbot.utils.TimePassedException;
 import cz.zcu.kiv.si.sportbot.utils.Utils;
-import groovy.util.logging.Log;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,10 +28,7 @@ import java.util.*;
  */
 @Service
 public class ChatBotServiceImpl implements ChatBotService{
-    private static Logger logger = Logger.getLogger(ChatBotServiceImpl.class);
     private String url = "https://gateway.watsonplatform.net/conversation/api";
-    private ConversationService service = new ConversationService(ConversationService.VERSION_DATE_2017_02_03,
-            "40fc984f-8da4-4bbc-9edb-18df99a346aa", "ny686uBZUy7d");
 
     @Autowired
     private WeatherService weatherService;
@@ -49,26 +43,18 @@ public class ChatBotServiceImpl implements ChatBotService{
         ConversationService service = new ConversationService("2017-04-21");
         service.setUsernameAndPassword("40fc984f-8da4-4bbc-9edb-18df99a346aa", "ny686uBZUy7d");
         service.setEndPoint(url);
+        String workspaceId = "91e6b689-f119-47b1-be6e-48906213eda1";
         MessageRequest newMessage;
         if (previousContext==null) {
-            newMessage = new MessageRequest.Builder()
-                    .inputText(text)
-                    .build();
+            newMessage = new MessageRequest.Builder().inputText(text).build();
         }else{
-            newMessage = new MessageRequest.Builder()
-                    .inputText(text)
-                    .context(previousContext)
-                    .build();
+            newMessage = new MessageRequest.Builder().inputText(text).context(previousContext).build();
         }
-        String workspaceId = "91e6b689-f119-47b1-be6e-48906213eda1";
-        MessageResponse response = service
-                .message(workspaceId, newMessage)
-                .execute();
+        MessageResponse response = service.message(workspaceId, newMessage).execute();
         //action
 
         ObjectMapper mapper = new ObjectMapper();
         Context context = mapper.convertValue(response.getContext(), Context.class);
-        System.out.println(response.getContext());
         ClientResponse clientResponse = new ClientResponse();
         Map<String,Object> responseContext = response.getContext();
         System.out.println("kontext v param: "+ previousContext );
@@ -78,7 +64,6 @@ public class ChatBotServiceImpl implements ChatBotService{
             List<String> sportsGroup = context.getSportgroups();
             String day = context.getDay();
             String daySpec = context.getDaySpec();
-            daySpec = daySpec == null ? "" : daySpec;
             Integer time = context.getTime();
             List<Day> days = getListDay(Utils.lookupDay(day));
             Week week = Utils.lookupWeek(daySpec);
@@ -105,7 +90,6 @@ public class ChatBotServiceImpl implements ChatBotService{
         }
         clientResponse.setContext(responseContext);
         clientResponse.setText((List<String>) response.getOutput().get("text"));
-//        clientResponse.setText(response.getOutput().get("text").toString());
         System.out.println("vysledek vracen");
         return clientResponse;
     }
@@ -118,11 +102,11 @@ public class ChatBotServiceImpl implements ChatBotService{
         if (timeInteger==null){
             timeInt = 12;
             openingTime.setFrom(0);
-            openingTime.setFrom(24);
+            openingTime.setTo(24);
         }else{
             timeInt = timeInteger.intValue();
             openingTime.setFrom(timeInteger.intValue());
-            openingTime.setFrom(timeInteger.intValue()+1);
+            openingTime.setTo(timeInteger.intValue()+1);
         }
         for (Day d : days) {
             SportGroupForecast sgp;
@@ -131,8 +115,8 @@ public class ChatBotServiceImpl implements ChatBotService{
             data.setaWeather(sgp.getWeather());
             data.setCurrent(sgp.isCurrent());
             data.setDay(d);
-            List<SportGroup> search = !sportGroup.isEmpty() ? sportGroup : Arrays.asList(sgp.getSportGroup());
-            data.setPlaces(getSportPlacesByGroup(sports,search,d,openingTime));
+            List<SportGroup> searchGroup = !sportGroup.isEmpty() ? sportGroup : Arrays.asList(sgp.getSportGroup());
+            data.setPlaces(getSportPlacesByGroup(sports,searchGroup,d,openingTime));
             datas.add(data);
         }
         return datas;
@@ -143,13 +127,11 @@ public class ChatBotServiceImpl implements ChatBotService{
         List<SportPlace> sportPlaces = new ArrayList<>();
         List<SportType> sportTypes = new ArrayList<>();
         if(sports.isEmpty()){
-            for ( SportGroup group : searchGroup){
-                if(group==SportGroup.OUTSIDE){
-                    sportPlaces.addAll(dataFinder.findOutsideSport());
-                }
-                if(group==SportGroup.INSIDE){
-                    sportPlaces.addAll(dataFinder.findInsideSport());
-                }
+            if (searchGroup.remove(SportGroup.OUTSIDE)){
+                sportPlaces.addAll(dataFinder.findOutsideSport());
+            }
+            if (searchGroup.remove(SportGroup.INSIDE)){
+                sportPlaces.addAll(dataFinder.findOutsideSport());
             }
             sportPlaces = dataFinder.findSportInGroup(searchGroup);
         }else{
@@ -187,7 +169,7 @@ public class ChatBotServiceImpl implements ChatBotService{
     }
     private List<Day> getListDay(Day day){
         List<Day> list = new ArrayList<>();
-        if(day!=null ) {
+        if(day!=null ){
             if (day == Day.WEEKEND) {
                 list.add(Day.SATURDAY);
                 list.add(Day.SUNDAY);
@@ -195,7 +177,7 @@ public class ChatBotServiceImpl implements ChatBotService{
                 list.add(Utils.getWeekDay(day));
             }
         }else{
-            list = Arrays.asList(Day.values());
+            list = Arrays.asList(Day.MONDAY,Day.TUESDAY,Day.WEDNESDAY,Day.THURSDAY,Day.FRIDAY,Day.SATURDAY,Day.SUNDAY);
         }
         return list;
     }
