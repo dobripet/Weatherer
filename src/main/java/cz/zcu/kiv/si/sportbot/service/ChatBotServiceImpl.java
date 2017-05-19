@@ -70,7 +70,9 @@ public class ChatBotServiceImpl implements ChatBotService{
             System.out.println("hledej: day="+ day+", daySpec=" + daySpec);
             System.out.println("days:"+days);
             System.out.println("week:"+week);
-            if (context.getFindWeather() != null && context.getFindWeather().booleanValue()) {
+            if(true){
+                //TODO: odkomentuj po testovani servisy
+//            if (context.getFindWeather() != null && context.getFindWeather().booleanValue()) {
                 int timeInt = Utils.getCurrentHour()+1;
                 Day d = days.get(0);
                 SportGroupForecast sportGroup = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
