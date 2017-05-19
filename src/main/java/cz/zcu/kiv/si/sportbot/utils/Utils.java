@@ -94,5 +94,9 @@ public class Utils {
         }
         return null;
     }
+    public static int getCurrentHour(){
+        Calendar rightNow = Calendar.getInstance();
+        return rightNow.get(Calendar.HOUR_OF_DAY);
+    }
 
 }

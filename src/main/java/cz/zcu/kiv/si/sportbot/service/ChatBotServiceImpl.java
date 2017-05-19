@@ -71,7 +71,7 @@ public class ChatBotServiceImpl implements ChatBotService{
             System.out.println("days:"+days);
             System.out.println("week:"+week);
             if (context.getFindWeather() != null && context.getFindWeather().booleanValue()) {
-                int timeInt = time == null ? 12 : time;
+                int timeInt = Utils.getCurrentHour()+1;
                 Day d = days.get(0);
                 SportGroupForecast sportGroup = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
                 Data data = new Data();
@@ -100,8 +100,8 @@ public class ChatBotServiceImpl implements ChatBotService{
         OpeningTime openingTime = new OpeningTime();
         int timeInt;
         if (timeInteger==null){
-            timeInt = 12;
-            openingTime.setFrom(0);
+            timeInt = Utils.getCurrentHour()+1;
+            openingTime.setFrom(timeInt);
             openingTime.setTo(24);
         }else{
             timeInt = timeInteger.intValue();
