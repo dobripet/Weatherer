@@ -73,15 +73,17 @@ public class WeatherServiceOpenWeatherApi implements WeatherService {
 
     @Override
     public SportGroupForecast getSportGroupAndForecastForDate(int hour, Day day, Week week) throws TimePassedException{
+        System.out.println("pocasi " + hour + " day " +day+ " week " +week);
         long time = Utils.getUnixTimeFromDate(hour, Utils.getWeekDay(day), week);
         SportGroupForecast sportGroupForecast = null;
         //browse accurate forecast
         if(getWeatherForecast() != null) {
             List<CurrentWeather> cwList = getWeatherForecast().getList();
+            System.out.println(getWeatherForecast().getList().size());
             if (cwList != null && cwList.size() > 0) {
-                if (cwList.get(cwList.size() - 1).getDt() < (time + 10800)) {
+                if ((cwList.get(cwList.size() - 1).getDt() + 10800) > time ) {
                     for (CurrentWeather cw : cwList) {
-                        if (cw.getDt() < time) {
+                        if ((cw.getDt()+5400) > time) {
                             //https://openweathermap.org/weather-conditions
                             if (((cw.getWeather().getId() >= 800 && cw.getWeather().getId() < 900)
                                     || (cw.getWeather().getId() > 950 && cw.getWeather().getId() < 957))
