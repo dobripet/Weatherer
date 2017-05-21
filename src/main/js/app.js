@@ -1,7 +1,6 @@
 'use strict';
 import React from 'react'
 import { render } from "react-dom"
-import { Router, Route, Link, browserHistory } from 'react-router'
 import Chat from './chat'
 //const API = 'http://localhost:9080/sportbot/';
 const API = '/';
