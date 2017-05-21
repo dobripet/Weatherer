@@ -32,6 +32,8 @@ public class Context {
     private List<String> sportgroups;
     @JsonProperty("find_weather")
     private Boolean findWeather;
+    @JsonProperty("show_weather")
+    private Boolean showWeather;
     @JsonProperty("find_where")
     private Boolean findWhere;
     @JsonProperty("find_when")
@@ -128,6 +130,14 @@ public class Context {
 
     public void setFindWeather(Boolean findWeather) {
         this.findWeather = findWeather;
+    }
+
+    public Boolean getShowWeather() {
+        return showWeather;
+    }
+
+    public void setShowWeather(Boolean showWeather) {
+        this.showWeather = showWeather;
     }
 
     public Boolean getFindWhen() {
