@@ -74,15 +74,24 @@ public class ChatBotServiceImpl implements ChatBotService{
                 int timeInt = time!=null ? time : Utils.getCurrentHour()+1;
                 Day d = days.get(0);
                 SportGroupForecast sportGroup = weatherService.getSportGroupAndForecastForDate(timeInt, d, week);
-                Data data = new Data();
-                data.setWeather(sportGroup.getWeather());
-                data.setCurrent(sportGroup.isCurrent());
-                clientResponse.setData(Arrays.asList(data));
+                if (context.getShowWeather() != null && context.getShowWeather().booleanValue()) {
+                    Data data = new Data();
+                    data.setWeather(sportGroup.getWeather());
+                    data.setCurrent(sportGroup.isCurrent());
+                    clientResponse.setData(Arrays.asList(data));
+                }
                 responseContext.put("outside", sportGroup.getSportGroup() == SportGroup.OUTSIDE);
                 System.out.println("pocasi vyhledano: "+ d + ";"+ week);
             }
             if (context.isAction()) {
-                clientResponse.setData(find(sports, sportsGroup, days, week, time));
+                List<Data> result = find(sports, sportsGroup, days, week, time);
+                if (result.isEmpty()) {
+                    List<String> responseText = new ArrayList<>();
+                    responseText.add("Bohužel k této aktivitě nemám žádné záznamy v databázi.");
+                    clientResponse.setText(responseText);
+                } else {
+                    clientResponse.setData(result);
+                }
                 System.out.println("vyhledano");
             }
         }catch (TimePassedException e) {

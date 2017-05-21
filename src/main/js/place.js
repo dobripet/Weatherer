@@ -65,7 +65,7 @@ export default class Place extends React.Component{
             if(url) {
                 urlRow = <tr>
                     <td>Web:</td>
-                    <td>{url}</td>
+                    <td><a href={url}>{url}</a></td>
                 </tr>;
             }
             if(sports && Array.isArray(sports) && sports.length > 0 && sports[0] && sports[0].price){
