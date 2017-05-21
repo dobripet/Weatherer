@@ -40,7 +40,7 @@ export default class WeatherForecast extends React.Component{
         let mornRow = null;
         if(eve && morn){
             mornRow = <tr><td>Ranní teplota:</td><td>{Math.round(morn)}°C</td></tr>;
-            eveRow = <tr><td>Večerní teplota;</td><td>{Math.round(eve)}°C</td></tr>;
+            eveRow = <tr><td>Večerní teplota:</td><td>{Math.round(eve)}°C</td></tr>;
         }
 
         return (
@@ -50,7 +50,7 @@ export default class WeatherForecast extends React.Component{
                     {daySpan}
                     {description}
                 </div>
-                <table className="weather-detail-table weather-small">
+                <table className="weather-detail-table small-table">
                     <tbody>
                     {humidityRow}
                     {pressureRow}

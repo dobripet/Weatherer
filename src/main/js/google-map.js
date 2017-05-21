@@ -21,7 +21,6 @@ class GoogleMap extends React.Component {
                 name={this.props.name}
                 position={this.props.marker} />;
         }
-        console.log("chci vykreslit mapu ", this.props.marker, this.props.zoom)
         return(
                 <Map google={this.props.google}
                      containerStyle={{width: '200px', height: '200px', position: 'relative', margin:"3px 0px 3px 10px"}}

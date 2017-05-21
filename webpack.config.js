@@ -39,8 +39,6 @@ module.exports = function(){
                 'whatwg-fetch',
                 'react',
                 'react-dom',
-                'react-router',
-                'react-loader',
                 'react-bootstrap',
                 'babel-polyfill'
             ]

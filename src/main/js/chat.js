@@ -12,12 +12,6 @@ export default class Chat extends React.Component{
         this.props.handleUserAnswer(answer);
     }
     render() {
-        //let msgs = [];
-        /*for(const msg of messages){
-            if(msg.bot){
-                msgs.push(<ChatMessage bot={bot} message={}/>)
-            }
-        }*/
         const {
             messages
         } = this.props;

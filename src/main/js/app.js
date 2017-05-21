@@ -3,23 +3,8 @@ import React from 'react'
 import { render } from "react-dom"
 import { Router, Route, Link, browserHistory } from 'react-router'
 import Chat from './chat'
-//import QueryBuilder from './query-builder/query-builder'
-/*
-class NotFound extends React.Component{
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        return <div className="jumbotron">
-            <h1>404 - Page not found</h1>
-            <p>
-                The page you're looking for doesn't seem to exist.
-            </p>
-        </div>;
-    }
-}*/
-const API = 'http://localhost:9080/sportbot/';
-//const API = '/';
+//const API = 'http://localhost:9080/sportbot/';
+const API = '/';
 class App extends React.Component{
     constructor(props) {
         super(props);
@@ -50,7 +35,6 @@ class App extends React.Component{
             if (json.error) {
                 throw new Error();
             }
-            console.log(json);
             this.setState({messages: [...this.state.messages, {bot: true, text:json.text, data: json.data, context: json.context}], disabledInput: false, error:false});
         }).catch( error => {
             console.log("ERROR", error);
@@ -80,20 +64,12 @@ class App extends React.Component{
             if (json.error) {
                 throw new Error();
             }
-            console.log(json);
             this.setState({messages: [...this.state.messages, {bot: true, text:json.text, data: json.data, context: json.context}], disabledInput: false, error: false});
         }).catch( error => {
             console.log("ERROR", error);
             this.setState({error:"Něco se pokazilo, zkuste jiný dotaz :(", disabledInput: false});
         });
     }
-    /*
-     <header>
-     <ul className="nav navbar navbar-static-top nav-tabs">
-     <li><Link to="/home" activeClassName="active">Home</Link></li>
-     </ul>
-     </header>
-     */
     render() {
         let error = null;
         if(this.state.error){
@@ -110,27 +86,4 @@ class App extends React.Component{
         )
     }
 }
-/*
-class Home extends React.Component{
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        return (
-            <h2>Welcome to React App!</h2>
-        )
-    }
-}
-*/
-/*<Redirect from="/" to="builder" />
-const router =
-    <Router history={browserHistory}>
-        <Route path="/" component={App}>
-            <Route path="home" component={Home} />
-            <Route path="*" component={NotFound}/>
-        </Route>
-    </Router>;
-
- render(router, document.getElementById("react"));
- */
 render(<App/>, document.getElementById("react"));

@@ -29,9 +29,9 @@ export default class ChatMessage extends React.Component{
         }
         let dayName = null;
         if(multipleDays){
-            if(day === 'saturday'){
+            if(day === 'SATURDAY'){
                 dayName="Aktivity pro sobotu:"
-            } else if(day === 'sunday'){
+            } else if(day === 'SUNDAY'){
                 dayName="Aktivity pro neděli:"
             }
             if(dayName){
@@ -49,8 +49,12 @@ export default class ChatMessage extends React.Component{
     render() {
         const data = this.props.message.data;
         let dataComponents = [];
+        let question = null;
         if(data && Array.isArray(data)){
-            dataComponents = data.map((d, i) => this.renderDay(i, d, data.length > 1))
+            dataComponents = data.map((d, i) => this.renderDay(i, d, data.length > 1));
+            if(dataComponents.length > 0 && Array.isArray(data[0].places) && data[0].places.length > 0){
+                question = "Přejete si vědět něco dalšího?"
+            }
         }
         let className = 'message-user';
         let classNameContainer = 'message-container-user';
@@ -63,6 +67,7 @@ export default class ChatMessage extends React.Component{
                 <div className={className}>
                     {Array.isArray(this.props.message.text) ? this.props.message.text.join(" ") : this.props.message.text}
                     {dataComponents}
+                    {question}
                 </div>
             </div>
         )
